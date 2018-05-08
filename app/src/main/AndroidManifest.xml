@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.demo.lixuan.mydemo">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <application
+        android:name=".base.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".DemoActivity.RetrofitIntorcepterActivity"/>
+        <activity android:name=".RecyclerView.ExpendListActivity"/>
+        <activity android:name=".widgt.button.ButtonActivity"/>
+        <activity android:name=".DemoActivity.StringAndTextViewActivity"/>
+        <activity android:name=".DemoActivity.AnimationActivity"/>
+        <activity android:name=".DemoActivity.Base64Activity"/>
+        <activity android:name=".DemoActivity.HeadZoomScollerActvity"/>
+        <activity android:name=".DemoActivity.ViewAndImageBannerBarActivity"/>
+        <activity android:name=".DemoActivity.topBar.TopBarActivity"/>
+        <activity android:name=".DemoActivity.topBar.NestLinearLayoutActivity"/>
+        <activity android:name=".DemoActivity.topBar.HideTopBarActvitiy"/>
+        <activity android:name=".DemoActivity.ThreadActivity"/>
+        <activity android:name=".OOM.ContextOomActivity"/>
+        <activity android:name=".DemoActivity.OOMExampleACitivity"/>
+        <activity android:name=".DemoActivity.WidgtActivity"/>
+        <activity android:name=".widgt.calendar.CalendarActivity"/>
+        <activity android:name=".baseElement.ContentProvideActivity"/>
+        <activity android:name=".DemoActivity.BaseElementActivity"/>
+        <activity android:name=".widgt.ImageView.ImageActivity"/>
+        <activity android:name=".annotation.AnnotationTestActivity"/>
+
+        <provider
+            android:name=".baseElement.MyContentProvider"
+            android:authorities="com.demo.lixuan.mydemo.baseElement.provider"
+            android:enabled="true"
+            android:exported="true">
+        </provider>
+    </application>
+
+</manifest>

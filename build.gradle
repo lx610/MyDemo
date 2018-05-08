@@ -1,0 +1,122 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.0.0'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+//
+//gradle.addListener(new LifecycleListener())
+//class LifecycleListener implements  TaskExecutionListener,BuildListener{
+//    @Override
+//    void buildStarted(Gradle gradle) {
+//
+//    }
+//
+//    @Override
+//    void settingsEvaluated(Settings settings) {
+//
+//    }
+//
+//    @Override
+//    void projectsLoaded(Gradle gradle) {
+//
+//    }
+//
+//    @Override
+//    void projectsEvaluated(Gradle gradle) {
+//
+//    }
+//
+//    @Override
+//    void buildFinished(BuildResult result) {
+//
+//    }
+//
+//    @Override
+//    void beforeExecute(Task task) {
+//
+//        println("beforeExecute "+task.name)
+//    }
+//
+//    @Override
+//    void afterExecute(Task task, TaskState state) {
+//        println("afterExecute  name="+task.name+" state="+state.toString() )
+//    }
+//}
+
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext{
+
+    supportLibVersion = '25.1.0'
+    butterknifeVersion = '8.5.1'
+    rxjava2Version = '2.0.8'
+    retrofit2Version = '2.2.0'
+    rxlifecycle='2.1.0'
+    gsonVersion = '2.8.0'
+
+    version = [
+            androidSupportSdkVersion: "24.2.0",
+//            androidSupportSdkVersion: "27.0.2",
+            retrofitSdkVersion      : "2.1.0",
+            dagger2SdkVersion       : "2.6",
+            rxlifecycleSdkVersion   : "0.6.1",
+            espressoSdkVersion      : "2.2.2"
+    ]
+
+    dependencies = [
+
+            "multidex"                 : "compile 'com.android.support:multidex:1.0.1'",
+            "androidJUnitRunner"       : "android.support.test.runner.AndroidJUnitRunner",
+            "javax.annotation"         : 'javax.annotation:jsr250-api:1.0',
+            "appcompat-v7"             : "com.android.support:appcompat-v7:${version["androidSupportSdkVersion"]}",
+            "design"                   : "com.android.support:design:${version["androidSupportSdkVersion"]}",
+            "support-v4"               : "com.android.support:support-v4:${version["androidSupportSdkVersion"]}",
+            "cardview-v7"              : "com.android.support:cardview-v7:${version["androidSupportSdkVersion"]}",
+            "annotations"              : "com.android.support:support-annotations:${version["androidSupportSdkVersion"]}",
+            "recyclerview-v7"          : "com.android.support:recyclerview-v7:${version["androidSupportSdkVersion"]}",
+
+            //netWork
+            "retrofit"                 : "com.squareup.retrofit2:retrofit:${version["retrofitSdkVersion"]}",
+            "retrofit-converter-gson"  : "com.squareup.retrofit2:converter-gson:${version["retrofitSdkVersion"]}",
+            "retrofit-adapter-rxjava"  : "com.squareup.retrofit2:adapter-rxjava:${version["retrofitSdkVersion"]}",
+            "junit"                    : "junit:junit:4.12",
+            "okhttp3"                  : "com.squareup.okhttp3:okhttp:3.4.2",
+            "gson"                     : "com.google.code.gson:gson:2.6.2",
+
+            "butterknife"              : "com.jakewharton:butterknife:8.4.0",
+            "butterknife-apt"          : "com.jakewharton:butterknife-compiler:8.4.0",
+            "glide"                    : "com.github.bumptech.glide:glide:3.7.0",
+            "androideventbus"          : "org.simple:androideventbus:1.0.5.1",
+
+            //rxJava 1
+            "rxandroid"                : "io.reactivex:rxandroid:1.1.0",
+            "rxjava"                   : "io.reactivex:rxjava:1.1.0",
+            "rxlifecycle"              : "com.trello:rxlifecycle:${version["rxlifecycleSdkVersion"]}",
+            "rxlifecycle-components"   : "com.trello:rxlifecycle-components:${version["rxlifecycleSdkVersion"]}",
+            "rxcache"                  : "com.github.VictorAlbertos.RxCache:runtime:1.6.9",
+            "rxcache-jolyglot-gson"    : "com.github.VictorAlbertos.Jolyglot:gson:0.0.3",
+            "rxbinding-recyclerview-v7": "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:0.4.0",
+            "rxpermissions"            : "com.tbruyelle.rxpermissions:rxpermissions:0.9.1@aar",
+
+    ]
+
+}
