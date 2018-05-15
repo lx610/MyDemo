@@ -1,6 +1,7 @@
 package com.demo.lixuan.mydemo.DemoActivity;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.demo.lixuan.mydemo.R;
+import com.demo.lixuan.mydemo.animation.InterpolatorActivity;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 
 import butterknife.BindView;
@@ -35,6 +37,8 @@ public class AnimationActivity extends BaseActivity {
     LottieAnimationView mAeView;
     @BindView(R.id.ae_container)
     FrameLayout mAeContainer;
+    @BindView(R.id.tv_intorpolator_activity)
+    TextView mTvIntorpolatorActivity;
 
     @Override
     public int getLayoutResId() {
@@ -85,6 +89,12 @@ public class AnimationActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 mAeContainer.setVisibility(View.GONE);
+            }
+        });
+        mTvIntorpolatorActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AnimationActivity.this, InterpolatorActivity.class));
             }
         });
     }

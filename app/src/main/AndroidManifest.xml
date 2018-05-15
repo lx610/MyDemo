@@ -39,6 +39,7 @@
         <activity android:name=".DemoActivity.BaseElementActivity"/>
         <activity android:name=".widgt.ImageView.ImageActivity"/>
         <activity android:name=".annotation.AnnotationTestActivity"/>
+        <activity android:name=".animation.InterpolatorActivity"/>
 
         <provider
             android:name=".baseElement.MyContentProvider"
