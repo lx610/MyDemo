@@ -40,6 +40,17 @@
         <activity android:name=".widgt.ImageView.ImageActivity"/>
         <activity android:name=".annotation.AnnotationTestActivity"/>
         <activity android:name=".animation.InterpolatorActivity"/>
+        <activity android:name=".process.FirstActivity"/>
+        <activity android:name=".process.SecondActivity"
+            android:process=":remote"
+            />
+        <activity android:name=".process.ThirdActivity"
+            android:process="com.mydemo.remote"
+            />
+        <activity android:name=".DemoActivity.ProcessActivity"/>
+        <service android:name=".process.MessageService"
+            android:process=":remote"
+            />
 
         <provider
             android:name=".baseElement.MyContentProvider"

@@ -14,6 +14,7 @@ import com.demo.lixuan.mydemo.DemoActivity.Base64Activity;
 import com.demo.lixuan.mydemo.DemoActivity.BaseElementActivity;
 import com.demo.lixuan.mydemo.DemoActivity.HeadZoomScollerActvity;
 import com.demo.lixuan.mydemo.DemoActivity.OOMExampleACitivity;
+import com.demo.lixuan.mydemo.DemoActivity.ProcessActivity;
 import com.demo.lixuan.mydemo.DemoActivity.RetrofitIntorcepterActivity;
 import com.demo.lixuan.mydemo.DemoActivity.StringAndTextViewActivity;
 import com.demo.lixuan.mydemo.DemoActivity.ThreadActivity;
@@ -58,6 +59,7 @@ public class MainActivity extends BaseActivity {
         mLlBtContainer.addView(generateBtToStartActivity(new WidgtActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new BaseElementActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new AnnotationTestActivity()));
+        mLlBtContainer.addView(generateBtToStartActivity(new ProcessActivity()));
     }
 
     @Override
