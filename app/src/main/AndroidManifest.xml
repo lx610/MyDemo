@@ -48,6 +48,10 @@
             android:process="com.mydemo.remote"
             />
         <activity android:name=".DemoActivity.ProcessActivity"/>
+        <activity android:name=".DemoActivity.KotLinActivity"/>
+        <activity android:name=".mykotlin.KotlinIndexActivity"/>
+
+
         <service android:name=".process.MessageService"
             android:process=":remote"
             />

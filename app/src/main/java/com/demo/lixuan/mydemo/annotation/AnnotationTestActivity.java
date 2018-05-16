@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
-import com.example.MyBindView;
 
 import java.lang.reflect.Method;
 
@@ -33,8 +32,6 @@ public class AnnotationTestActivity extends BaseActivity {
     GridLayout mLlBtContainer;
     @BindView(R.id.tv_log)
     TextView mTvLog;
-    @MyBindView(value = R.id.tv_log)
-    TextView mTvLog2;
 
     @Override
     public int getLayoutResId() {
