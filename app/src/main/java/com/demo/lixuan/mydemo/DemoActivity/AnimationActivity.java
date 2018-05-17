@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.demo.lixuan.mydemo.R;
+import com.demo.lixuan.mydemo.animation.FlowFingerActivity;
 import com.demo.lixuan.mydemo.animation.InterpolatorActivity;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 
@@ -39,6 +40,8 @@ public class AnimationActivity extends BaseActivity {
     FrameLayout mAeContainer;
     @BindView(R.id.tv_intorpolator_activity)
     TextView mTvIntorpolatorActivity;
+    @BindView(R.id.tv_flow_finger_activity)
+    TextView mTvFlowFingerActivity;
 
     @Override
     public int getLayoutResId() {
@@ -95,6 +98,13 @@ public class AnimationActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AnimationActivity.this, InterpolatorActivity.class));
+            }
+        });
+
+        mTvFlowFingerActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AnimationActivity.this, FlowFingerActivity.class));
             }
         });
     }

@@ -16,6 +16,13 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:id="@+id/tv_flow_finger_activity"
+            android:padding="10dp"
+            android:text="跟随手指运动"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
             android:id="@+id/tv_transt"
             android:padding="10dp"
             android:text="横向平移"

@@ -49,7 +49,7 @@
             />
         <activity android:name=".DemoActivity.ProcessActivity"/>
         <activity android:name=".DemoActivity.KotLinActivity"/>
-        <activity android:name=".mykotlin.KotlinIndexActivity"/>
+        <activity android:name=".animation.FlowFingerActivity"/>
 
 
         <service android:name=".process.MessageService"
