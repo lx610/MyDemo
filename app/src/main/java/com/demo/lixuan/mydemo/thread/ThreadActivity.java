@@ -1,6 +1,8 @@
-package com.demo.lixuan.mydemo.DemoActivity;
+package com.demo.lixuan.mydemo.thread;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +13,7 @@ import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 
 import java.util.concurrent.DelayQueue;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -35,6 +38,8 @@ import butterknife.ButterKnife;
 
 public class ThreadActivity extends BaseActivity {
     private static final String TAG = "ThreadActivity";
+
+    private static volatile int TICKE_NO=100;
 
     @BindView(R.id.ll_bt_container)
     GridLayout mLlBtContainer;
@@ -147,7 +152,71 @@ public class ThreadActivity extends BaseActivity {
 
             }
         }));
+
+        mLlBtContainer.addView(generateTextButton("handler refresh message", new View.OnClickListener() {
+            private static final int MSG_TICKET_SELL = 564;
+
+            Handler mHandler =new Handler(){
+                @Override
+                public void handleMessage(Message msg) {
+                    super.handleMessage(msg);
+                    switch (msg.what){
+                        case MSG_TICKET_SELL:
+                            mTvLog.append(  "ticke number ============" + msg.obj + " \n");
+                            break;
+                    }
+                }
+            };
+
+            @Override
+            public void onClick(View v) {
+                TICKE_NO=100;
+                Executors.newCachedThreadPool().execute(generateSellTicketRunable());
+                Executors.newCachedThreadPool().execute(generateSellTicketRunable());
+                Executors.newCachedThreadPool().execute(generateSellTicketRunable());
+                Executors.newCachedThreadPool().execute(generateSellTicketRunable());
+                Executors.newCachedThreadPool().execute(generateSellTicketRunable());
+            }
+//            Message msg =new Message();//Message 对象不可以被多个线程复用
+            private Runnable generateSellTicketRunable() {
+
+                return new Runnable() {
+//                    Message msg =new Message();//Message 对象不可以被多个线程复用
+                    @Override
+                    public void run() {
+//                        synchronized (ThreadActivity.class){//放在这里会一条线程走到底
+                        while (true){
+//                            synchronized (ThreadActivity.class){//放在这里会出现while，判断可行然后切换线程，最后ticke 被减少成负数
+                            synchronized (ThreadActivity.class){
+                                if (TICKE_NO>0){
+                                    TICKE_NO--;
+                                    StringBuffer buffer =new StringBuffer();
+                                    buffer.append("" + Thread.currentThread() +  " \n");
+                                    buffer.append("" + TICKE_NO +  " \n");
+
+                                    Message msg =new Message();//Message 对象不可以被多个线程复用
+                                    msg.what=MSG_TICKET_SELL;
+                                    msg.obj = buffer.toString();
+                                    mHandler.sendMessage(msg);
+                                    try {
+                                        Thread.sleep(30);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                }else {
+                                    break;
+                                }
+                            }
+
+                        }
+
+                    }
+                };
+            }
+        }));
     }
+
+
 
     @NonNull
     private Runnable generateRunable(final String taskName) {
