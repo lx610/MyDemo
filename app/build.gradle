@@ -20,6 +20,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors{
+        baidu{
+            applicationId "com.demo.lixuan.mydemo.baidu"
+            buildConfigField("String","webUrl","\"wwww.baidu.com\"")
+            }
+        google{
+            applicationId "com.demo.lixuan.mydemo.google"
+            buildConfigField("String","webUrl","\"wwww.google.com\"")
+        }
+    }
 }
 
 buildscript {

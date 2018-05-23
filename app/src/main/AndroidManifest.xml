@@ -50,6 +50,8 @@
         <activity android:name=".DemoActivity.ProcessActivity"/>
         <activity android:name=".DemoActivity.KotLinActivity"/>
         <activity android:name=".animation.FlowFingerActivity"/>
+        <activity android:name=".gradleSetting.GradleSetMutlApkActivity"/>
+
 
 
         <service android:name=".process.MessageService"
