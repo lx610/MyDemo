@@ -30,7 +30,6 @@
         <activity android:name=".DemoActivity.topBar.TopBarActivity"/>
         <activity android:name=".DemoActivity.topBar.NestLinearLayoutActivity"/>
         <activity android:name=".DemoActivity.topBar.HideTopBarActvitiy"/>
-        <activity android:name=".DemoActivity.ThreadActivity"/>
         <activity android:name=".OOM.ContextOomActivity"/>
         <activity android:name=".DemoActivity.OOMExampleACitivity"/>
         <activity android:name=".DemoActivity.WidgtActivity"/>
@@ -51,12 +50,16 @@
         <activity android:name=".DemoActivity.KotLinActivity"/>
         <activity android:name=".animation.FlowFingerActivity"/>
         <activity android:name=".gradleSetting.GradleSetMutlApkActivity"/>
+        <activity android:name=".baseElement.service.ServiceActivity"/>
+        <activity android:name=".baseElement.broadCast.FauceToCloseActivity"/>
 
 
 
         <service android:name=".process.MessageService"
             android:process=":remote"
             />
+
+        <service android:name=".baseElement.service.FrontService"/>
 
         <provider
             android:name=".baseElement.MyContentProvider"

@@ -1,5 +1,9 @@
 package com.demo.lixuan.mydemo.base;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.demo.lixuan.mydemo.R;
+import com.demo.lixuan.mydemo.Utils.UiUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -27,6 +32,7 @@ import butterknife.Unbinder;
 
 public abstract class BaseActivity extends AppCompatActivity {
     private Unbinder mUnbinder;
+    private ForeOffLine mReciever;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,7 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         initView();
         initData();
         initListener();
-
+        ActivityController.addActivity(this);
     }
 
     public abstract int getLayoutResId();
@@ -45,10 +51,29 @@ public abstract class BaseActivity extends AppCompatActivity {
     public abstract void initData();
     public abstract void initListener();
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        IntentFilter intentFilter =new IntentFilter();
+        intentFilter.addAction("com.lixuan.demo.ACT_OFFLINE");
+        mReciever = new ForeOffLine();
+        registerReceiver(mReciever,intentFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mReciever!=null){
+            unregisterReceiver(mReciever);
+        }
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mUnbinder.unbind();
+        ActivityController.removeActivity(this);
     }
 
     public View generateTextButton(String buttonName, View.OnClickListener oncliclickLiener) {
@@ -65,4 +90,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         return textBt;
     }
 
+
+    class ForeOffLine extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            UiUtils.makeText("销毁所有活动");
+        }
+    }
 }

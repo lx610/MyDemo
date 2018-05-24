@@ -18,6 +18,8 @@ import com.demo.lixuan.mydemo.DemoActivity.OOMExampleACitivity;
 import com.demo.lixuan.mydemo.DemoActivity.ProcessActivity;
 import com.demo.lixuan.mydemo.DemoActivity.RetrofitIntorcepterActivity;
 import com.demo.lixuan.mydemo.DemoActivity.StringAndTextViewActivity;
+import com.demo.lixuan.mydemo.baseElement.broadCast.FauceToCloseActivity;
+import com.demo.lixuan.mydemo.baseElement.service.ServiceActivity;
 import com.demo.lixuan.mydemo.gradleSetting.GradleSetMutlApkActivity;
 import com.demo.lixuan.mydemo.thread.ThreadActivity;
 import com.demo.lixuan.mydemo.DemoActivity.ViewAndImageBannerBarActivity;
@@ -64,6 +66,8 @@ public class MainActivity extends BaseActivity {
         mLlBtContainer.addView(generateBtToStartActivity(new ProcessActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new KotLinActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new GradleSetMutlApkActivity()));
+        mLlBtContainer.addView(generateBtToStartActivity(new ServiceActivity()));
+        mLlBtContainer.addView(generateBtToStartActivity(new FauceToCloseActivity()));
 
     }
 
