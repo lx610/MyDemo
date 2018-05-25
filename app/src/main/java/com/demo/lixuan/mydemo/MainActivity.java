@@ -18,16 +18,18 @@ import com.demo.lixuan.mydemo.DemoActivity.OOMExampleACitivity;
 import com.demo.lixuan.mydemo.DemoActivity.ProcessActivity;
 import com.demo.lixuan.mydemo.DemoActivity.RetrofitIntorcepterActivity;
 import com.demo.lixuan.mydemo.DemoActivity.StringAndTextViewActivity;
-import com.demo.lixuan.mydemo.baseElement.broadCast.FauceToCloseActivity;
-import com.demo.lixuan.mydemo.baseElement.service.ServiceActivity;
-import com.demo.lixuan.mydemo.gradleSetting.GradleSetMutlApkActivity;
-import com.demo.lixuan.mydemo.thread.ThreadActivity;
 import com.demo.lixuan.mydemo.DemoActivity.ViewAndImageBannerBarActivity;
 import com.demo.lixuan.mydemo.DemoActivity.WidgtActivity;
 import com.demo.lixuan.mydemo.DemoActivity.topBar.TopBarActivity;
 import com.demo.lixuan.mydemo.RecyclerView.ExpendListActivity;
 import com.demo.lixuan.mydemo.annotation.AnnotationTestActivity;
 import com.demo.lixuan.mydemo.base.BaseActivity;
+import com.demo.lixuan.mydemo.baseElement.broadCast.FauceToCloseActivity;
+import com.demo.lixuan.mydemo.baseElement.service.ServiceActivity;
+import com.demo.lixuan.mydemo.device.DeviceActivity;
+import com.demo.lixuan.mydemo.gradleSetting.GradleSetMutlApkActivity;
+import com.demo.lixuan.mydemo.java.JavaDemoActivity;
+import com.demo.lixuan.mydemo.thread.ThreadActivity;
 import com.demo.lixuan.mydemo.widgt.button.ButtonActivity;
 
 import butterknife.BindView;
@@ -68,6 +70,8 @@ public class MainActivity extends BaseActivity {
         mLlBtContainer.addView(generateBtToStartActivity(new GradleSetMutlApkActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new ServiceActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new FauceToCloseActivity()));
+        mLlBtContainer.addView(generateBtToStartActivity(new JavaDemoActivity()));
+        mLlBtContainer.addView(generateBtToStartActivity(new DeviceActivity()));
 
     }
 
