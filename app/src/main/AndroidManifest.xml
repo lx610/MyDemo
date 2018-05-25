@@ -57,6 +57,7 @@
         <activity android:name=".java.Proxy.ProxyActivity"/>
         <activity android:name=".device.camer.CamerActivity"/>
         <activity android:name=".device.DeviceActivity"/>
+        <activity android:name=".device.camer.LauchDeviceActivity"/>
 
 
 

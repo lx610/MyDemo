@@ -93,6 +93,7 @@ public class CamerActivity extends BaseActivity {
         Camera c = null;
         try {
             c = Camera.open();
+            c.setDisplayOrientation(90);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -182,5 +183,21 @@ public class CamerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+    // 释放相机
+    public void releaseCamera() {
+        if (mCamera != null) {
+            mCamera.setPreviewCallback(null);
+            mCamera.stopPreview();
+            mCamera.release();
+            mCamera = null;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        releaseCamera();
     }
 }
