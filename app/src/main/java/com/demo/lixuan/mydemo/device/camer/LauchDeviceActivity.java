@@ -25,6 +25,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import static android.R.attr.path;
+
 /**
  * Created by Administrator on 2018/5/25.
  */
@@ -40,6 +42,9 @@ public class LauchDeviceActivity extends LinearActivity {
 
     private File tempFile;
     private boolean enablehandlerPic =false;
+
+    //裁剪后的图片Uri路径，uritempFile为Uri类变量
+    Uri uriCropTempFile = Uri.parse("file://" + "/" + Environment.getExternalStorageDirectory().getPath() + "/" + "small.jpg");
 
     @Override
     public void initView() {
@@ -168,12 +173,13 @@ public class LauchDeviceActivity extends LinearActivity {
 //                int mHeight=150;
 //                Bitmap bitmap = ImageZip.decodeSampledBitmapFromFile(filePath, mWidth, mHeight);
 //                mImageView.setImageBitmap(bitmap);
-                startPhotoCrop(data);
+                startPhotoCrop(data,imagePath);
                 break;
 
             case CROP_PHOTO://处理裁剪返回结果
                 try {
-                    Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(Uri.fromFile(tempFile)));
+                    Bitmap bitmap;
+                    bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uriCropTempFile));
                     mImageView.setImageBitmap(bitmap);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -215,8 +221,10 @@ public class LauchDeviceActivity extends LinearActivity {
     /**
      * 开启裁剪相片
      * @param data
+     * @param path
+     * @param imagePath
      */
-    public void startPhotoCrop(Intent data) {
+    public void startPhotoCrop(Intent data, String imagePath) {
         //创建file文件，用于存储剪裁后的照片
 //        File cropImage = new File(Environment.getExternalStorageDirectory(), "crop_image.jpg");
         File cropImage = new File(getExternalCacheDir(), "crop_image.jpg");
@@ -230,9 +238,16 @@ public class LauchDeviceActivity extends LinearActivity {
         }
         Uri cropImgUri = Uri.fromFile(cropImage);
         Intent intent = new Intent("com.android.camera.action.CROP");
-        //设置源地址uri
 
-        intent.setDataAndType(data.getData(), "image/*");
+        //设置源地址uri
+//        Uri uriScr = FileProvider.getUriForFile(this, getPackageName() + ".provider", new File(path));
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            intent.setDataAndType(data.getData(), "image/*");
+        }else {
+            Uri uri= Uri.parse("file://" + imagePath);
+            intent.setDataAndType(uri, "image/*");
+        }
+
         intent.putExtra("crop", "true");
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);
@@ -241,12 +256,21 @@ public class LauchDeviceActivity extends LinearActivity {
         intent.putExtra("scale", true);
         //设置目的地址uri
 //        Uri uri = FileProvider.getUriForFile(UiUtils.getContext(), UiUtils.getString(R.string.app_authorities), iamgeFile);
-        Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".provider", tempFile);
+        Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".provider", cropImage);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         //设置图片格式
         intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
-        intent.putExtra("return-data", false);//data不需要返回,避免图片太大异常
+
+        /**
+         * 此方法返回的图片只能是小图片（sumsang测试为高宽160px的图片）
+         * 故只保存图片Uri，调用时将Uri转换为Bitmap，此方法还可解决miui系统不能return data的问题
+         */
+        //intent.putExtra("return-data", true);
+
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, uriCropTempFile);
+        intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
         intent.putExtra("noFaceDetection", true); // no face detection
+
         startActivityForResult(intent, CROP_PHOTO);
     }
 
