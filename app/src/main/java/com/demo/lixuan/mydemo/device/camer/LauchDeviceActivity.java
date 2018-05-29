@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.Utils.UiUtils;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -32,6 +34,7 @@ public class LauchDeviceActivity extends LinearActivity {
     private static final int INTENT_FOR_CAMERA = 690;
     private static final int INTENT_FOR_GALLARY = 750;
     private static final int PERSMISION_REQUEST= 870;
+    private static final int CROP_PHOTO = 950;
 
     private ImageView mImageView;
 
@@ -94,6 +97,9 @@ public class LauchDeviceActivity extends LinearActivity {
         mLlContainer.addView(mImageView);
     }
 
+    /**
+     * 不动态请求写入方法，BitMap会无法解析图片
+     */
     private void handlerPermission() {
         String[] permissons = {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -155,15 +161,25 @@ public class LauchDeviceActivity extends LinearActivity {
                 break;
 
             case INTENT_FOR_GALLARY :
-                setPhotoForMiuiSystem(data);
+               String imagePath= setPhotoForMiuiSystem(data);
 
 //                String filePath = getRealPathFromURI(data.getData());
 //                int mWidth =360;
 //                int mHeight=150;
 //                Bitmap bitmap = ImageZip.decodeSampledBitmapFromFile(filePath, mWidth, mHeight);
 //                mImageView.setImageBitmap(bitmap);
-
+                startPhotoCrop(data);
                 break;
+
+            case CROP_PHOTO://处理裁剪返回结果
+                try {
+                    Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(Uri.fromFile(tempFile)));
+                    mImageView.setImageBitmap(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                break;
+
         }
     }
 
@@ -175,7 +191,7 @@ public class LauchDeviceActivity extends LinearActivity {
         return cursor.getString(column_index);
     }
 
-    private void setPhotoForMiuiSystem(Intent data) {
+    private String setPhotoForMiuiSystem(Intent data) {
         Uri localUri = data.getData();
         String scheme = localUri.getScheme();
         String imagePath = "";
@@ -193,7 +209,48 @@ public class LauchDeviceActivity extends LinearActivity {
         int mHeight=150;
         Bitmap bitmap = ImageZip.decodeSampledBitmapFromFile(imagePath, mWidth, mHeight);
         mImageView.setImageBitmap(bitmap);
+        return imagePath;
     }
+
+    /**
+     * 开启裁剪相片
+     * @param data
+     */
+    public void startPhotoCrop(Intent data) {
+        //创建file文件，用于存储剪裁后的照片
+//        File cropImage = new File(Environment.getExternalStorageDirectory(), "crop_image.jpg");
+        File cropImage = new File(getExternalCacheDir(), "crop_image.jpg");
+        try {
+            if (cropImage.exists()) {
+                cropImage.delete();
+            }
+            cropImage.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Uri cropImgUri = Uri.fromFile(cropImage);
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        //设置源地址uri
+
+        intent.setDataAndType(data.getData(), "image/*");
+        intent.putExtra("crop", "true");
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        intent.putExtra("outputX", 200);
+        intent.putExtra("outputY", 200);
+        intent.putExtra("scale", true);
+        //设置目的地址uri
+//        Uri uri = FileProvider.getUriForFile(UiUtils.getContext(), UiUtils.getString(R.string.app_authorities), iamgeFile);
+        Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".provider", tempFile);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        //设置图片格式
+        intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+        intent.putExtra("return-data", false);//data不需要返回,避免图片太大异常
+        intent.putExtra("noFaceDetection", true); // no face detection
+        startActivityForResult(intent, CROP_PHOTO);
+    }
+
+
 
 
 
