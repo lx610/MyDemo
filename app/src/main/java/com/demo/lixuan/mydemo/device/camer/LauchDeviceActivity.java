@@ -44,7 +44,7 @@ public class LauchDeviceActivity extends LinearActivity {
     private boolean enablehandlerPic =false;
 
     //裁剪后的图片Uri路径，uritempFile为Uri类变量
-    Uri uriCropTempFile = Uri.parse("file://" + "/" + Environment.getExternalStorageDirectory().getPath() + "/" + "small.jpg");
+    Uri uriCropTempFile = Uri.parse("file://" + "/" + Environment.getExternalStorageDirectory().getPath() + "/" + "croptemp.jpg");
 
     @Override
     public void initView() {
@@ -221,7 +221,6 @@ public class LauchDeviceActivity extends LinearActivity {
     /**
      * 开启裁剪相片
      * @param data
-     * @param path
      * @param imagePath
      */
     public void startPhotoCrop(Intent data, String imagePath) {
