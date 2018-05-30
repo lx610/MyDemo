@@ -3,7 +3,7 @@ package com.demo.lixuan.mydemo.device;
 import android.content.Intent;
 import android.view.View;
 
-import com.demo.lixuan.mydemo.LinearActivity;
+import com.demo.lixuan.mydemo.base.publicLayout.LinearActivity;
 import com.demo.lixuan.mydemo.device.camer.CamerActivity;
 import com.demo.lixuan.mydemo.device.camer.LauchDeviceActivity;
 

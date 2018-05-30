@@ -1,8 +1,9 @@
-package com.demo.lixuan.mydemo;
+package com.demo.lixuan.mydemo.base.publicLayout;
 
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
+import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 
 import butterknife.BindView;

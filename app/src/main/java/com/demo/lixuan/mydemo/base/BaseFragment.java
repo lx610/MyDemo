@@ -1,11 +1,18 @@
 package com.demo.lixuan.mydemo.base;
 
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.demo.lixuan.mydemo.R;
 
 /**
  * 类 名: BaseFragment
@@ -21,6 +28,13 @@ import android.view.ViewGroup;
 public abstract class BaseFragment extends Fragment{
 
     View mView;
+    Activity mActivity;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mActivity = (Activity) context;
+    }
 
     @Nullable
     @Override
@@ -41,6 +55,26 @@ public abstract class BaseFragment extends Fragment{
         initData();
         initListener();
     }
+
+
+    public View generateTextButton(String buttonName, View.OnClickListener oncliclickLiener) {
+        TextView textBt=new TextView(mActivity);
+        LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.setMargins(10,10,10,10);
+        textBt.setLayoutParams(params);
+        textBt.setText(buttonName);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            textBt.setBackground(mActivity.getDrawable(R.color.pink));
+        }
+        textBt.setPadding(10,10,10,10);
+        textBt.setOnClickListener(oncliclickLiener);
+        return textBt;
+    }
+
+    public Activity getSaftActivity(){
+        return mActivity;
+    }
+
 
     protected abstract void initListener();
 

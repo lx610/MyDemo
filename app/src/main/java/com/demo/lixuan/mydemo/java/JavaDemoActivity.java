@@ -8,9 +8,7 @@ import android.widget.LinearLayout;
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 import com.demo.lixuan.mydemo.java.Proxy.ProxyActivity;
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import com.demo.lixuan.mydemo.java.staticTest.OutClassAndInerClassActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +32,13 @@ public class JavaDemoActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(JavaDemoActivity.this, ProxyActivity.class));
+            }
+        }));
+
+        mLlContainer.addView(generateTextButton("jump to out and iner class", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(JavaDemoActivity.this, OutClassAndInerClassActivity.class));
             }
         }));
     }

@@ -58,7 +58,8 @@
         <activity android:name=".device.camer.CamerActivity"/>
         <activity android:name=".device.DeviceActivity"/>
         <activity android:name=".device.camer.LauchDeviceActivity"/>
-
+        <activity android:name=".java.staticTest.JavaStatictestActivity"/>
+        <activity android:name=".java.staticTest.OutClassAndInerClassActivity"/>
 
 
         <service android:name=".process.MessageService"

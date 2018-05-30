@@ -17,15 +17,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.demo.lixuan.mydemo.LinearActivity;
+import com.demo.lixuan.mydemo.base.publicLayout.LinearActivity;
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.Utils.UiUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import static android.R.attr.path;
 
 /**
  * Created by Administrator on 2018/5/25.
