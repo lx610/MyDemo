@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.demo.lixuan.mydemo.OOM.ContextOomActivity;
+import com.demo.lixuan.mydemo.OOM.GCTestActivity;
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 
@@ -41,6 +42,12 @@ public class OOMExampleACitivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(OOMExampleACitivity.this, ContextOomActivity.class));
+            }
+        }));
+        mLlContainer.addView(generateTextButton("contextOOm", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(OOMExampleACitivity.this, GCTestActivity.class));
             }
         }));
     }

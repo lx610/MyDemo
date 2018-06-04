@@ -10,6 +10,7 @@ import com.demo.lixuan.mydemo.base.BaseActivity;
 import com.demo.lixuan.mydemo.widgt.ImageView.ImageActivity;
 import com.demo.lixuan.mydemo.widgt.button.ButtonActivity;
 import com.demo.lixuan.mydemo.widgt.calendar.CalendarActivity;
+import com.demo.lixuan.mydemo.widgt.clock.ClockActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,6 +58,12 @@ public class WidgtActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(WidgtActivity.this,ImageActivity.class));
+            }
+        }));
+        mLlContainer.addView(generateTextButton("ClockActivity", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(WidgtActivity.this,ClockActivity.class));
             }
         }));
     }

@@ -32,6 +32,7 @@
         <activity android:name=".DemoActivity.topBar.NestLinearLayoutActivity"/>
         <activity android:name=".DemoActivity.topBar.HideTopBarActvitiy"/>
         <activity android:name=".OOM.ContextOomActivity"/>
+        <activity android:name=".OOM.GCTestActivity"/>
         <activity android:name=".DemoActivity.OOMExampleACitivity"/>
         <activity android:name=".DemoActivity.WidgtActivity"/>
         <activity android:name=".widgt.calendar.CalendarActivity"/>
@@ -60,6 +61,7 @@
         <activity android:name=".device.camer.LauchDeviceActivity"/>
         <activity android:name=".java.staticTest.JavaStatictestActivity"/>
         <activity android:name=".java.staticTest.OutClassAndInerClassActivity"/>
+        <activity android:name=".widgt.clock.ClockActivity"/>
 
 
         <service android:name=".process.MessageService"
