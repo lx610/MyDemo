@@ -42,6 +42,8 @@ public class AnimationActivity extends BaseActivity {
     TextView mTvIntorpolatorActivity;
     @BindView(R.id.tv_flow_finger_activity)
     TextView mTvFlowFingerActivity;
+    @BindView(R.id.tv_hardware_activity)
+    TextView mTvHardwareActivity;
 
     @Override
     public int getLayoutResId() {
@@ -107,6 +109,7 @@ public class AnimationActivity extends BaseActivity {
                 startActivity(new Intent(AnimationActivity.this, FlowFingerActivity.class));
             }
         });
+
     }
 
     @Override

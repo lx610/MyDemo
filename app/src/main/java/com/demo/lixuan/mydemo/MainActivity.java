@@ -9,7 +9,6 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.demo.lixuan.mydemo.DemoActivity.AnimationActivity;
 import com.demo.lixuan.mydemo.DemoActivity.Base64Activity;
 import com.demo.lixuan.mydemo.DemoActivity.BaseElementActivity;
 import com.demo.lixuan.mydemo.DemoActivity.HeadZoomScollerActvity;
@@ -22,6 +21,7 @@ import com.demo.lixuan.mydemo.DemoActivity.ViewAndImageBannerBarActivity;
 import com.demo.lixuan.mydemo.DemoActivity.WidgtActivity;
 import com.demo.lixuan.mydemo.DemoActivity.topBar.TopBarActivity;
 import com.demo.lixuan.mydemo.RecyclerView.ExpendListActivity;
+import com.demo.lixuan.mydemo.animation.AnimationActivity;
 import com.demo.lixuan.mydemo.annotation.AnnotationTestActivity;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 import com.demo.lixuan.mydemo.baseElement.broadCast.FauceToCloseActivity;

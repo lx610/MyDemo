@@ -62,6 +62,8 @@
         <activity android:name=".java.staticTest.JavaStatictestActivity"/>
         <activity android:name=".java.staticTest.OutClassAndInerClassActivity"/>
         <activity android:name=".widgt.clock.ClockActivity"/>
+        <activity android:name=".animation.AnimationActivity"/>
+        <activity android:name=".animation.drag.DragActivity"/>
 
 
         <service android:name=".process.MessageService"
