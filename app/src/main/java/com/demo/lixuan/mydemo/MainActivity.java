@@ -35,7 +35,7 @@ import com.demo.lixuan.mydemo.widgt.button.ButtonActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity {
+public class  MainActivity extends BaseActivity {
 
 
     @BindView(R.id.ll_bt_container)

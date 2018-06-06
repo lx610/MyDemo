@@ -3,7 +3,7 @@
             android:id="@+id/root_grid_layout"
               android:orientation="vertical"
                 android:layout_column="3"
-            
+
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 

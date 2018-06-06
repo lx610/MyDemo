@@ -90,6 +90,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         return textBt;
     }
 
+    public void startActivityFromAct(Class activityClass){
+        startActivity(new Intent(BaseActivity.this,activityClass));
+    }
+
 
     class ForeOffLine extends BroadcastReceiver{
 
