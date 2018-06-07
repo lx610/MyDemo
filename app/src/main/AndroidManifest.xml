@@ -64,7 +64,9 @@
         <activity android:name=".widgt.clock.ClockActivity"/>
         <activity android:name=".animation.AnimationActivity"/>
         <activity android:name=".animation.drag.DragActivity"/>
+        <activity android:name=".java.designModel.DesignModelActivity"/>
         <activity android:name=".java.designModel.Stragety.StragetyModelAcitivity"/>
+        <activity android:name=".java.designModel.shareObject.FlyWigthDesignModelActivity"/>
 
 
         <service android:name=".process.MessageService"

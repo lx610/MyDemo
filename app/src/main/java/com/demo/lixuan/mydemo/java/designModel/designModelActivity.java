@@ -4,18 +4,26 @@ import android.view.View;
 
 import com.demo.lixuan.mydemo.base.publicLayout.LinearActivity;
 import com.demo.lixuan.mydemo.java.designModel.Stragety.StragetyModelAcitivity;
+import com.demo.lixuan.mydemo.java.designModel.shareObject.FlyWigthDesignModelActivity;
 
 /**
  * Created by Administrator on 2018/6/4.
  */
 
-public class designModelActivity extends LinearActivity {
+public class DesignModelActivity extends LinearActivity {
     @Override
     public void initView() {
         mLlContainer.addView(generateTextButton("策略模式", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivityFromAct(StragetyModelAcitivity.class);
+            }
+        }));
+
+        mLlContainer.addView(generateTextButton("享元模式", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityFromAct(FlyWigthDesignModelActivity.class);
             }
         }));
     }
