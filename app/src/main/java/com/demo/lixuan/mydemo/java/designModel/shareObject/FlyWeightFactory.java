@@ -25,6 +25,17 @@ public class FlyWeightFactory {
         }
     }
 
+   public Menu factory(String[] dish){
+       PersonMenuMuch menu = new PersonMenuMuch();
+       String key = null;
+       for (int i = 0; i < dish.length; i++) {
+           key = dish[i];
+           menu.add(key,this.factory(key));
+       }
+
+       return menu;
+   }
+
     public int getNumber(){
         return menuList.size();
     }
