@@ -28,6 +28,7 @@ import com.demo.lixuan.mydemo.baseElement.broadCast.FauceToCloseActivity;
 import com.demo.lixuan.mydemo.baseElement.service.ServiceActivity;
 import com.demo.lixuan.mydemo.device.DeviceActivity;
 import com.demo.lixuan.mydemo.gradleSetting.GradleSetMutlApkActivity;
+import com.demo.lixuan.mydemo.http.HttpActivity;
 import com.demo.lixuan.mydemo.java.JavaDemoActivity;
 import com.demo.lixuan.mydemo.thread.ThreadActivity;
 import com.demo.lixuan.mydemo.widgt.button.ButtonActivity;
@@ -72,6 +73,7 @@ public class  MainActivity extends BaseActivity {
         mLlBtContainer.addView(generateBtToStartActivity(new FauceToCloseActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new JavaDemoActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new DeviceActivity()));
+        mLlBtContainer.addView(generateBtToStartActivity(new HttpActivity()));
 
     }
 

@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".base.BaseApplication"
@@ -67,6 +68,7 @@
         <activity android:name=".java.designModel.DesignModelActivity"/>
         <activity android:name=".java.designModel.Stragety.StragetyModelAcitivity"/>
         <activity android:name=".java.designModel.shareObject.FlyWigthDesignModelActivity"/>
+        <activity android:name=".http.HttpActivity"/>
 
 
         <service android:name=".process.MessageService"

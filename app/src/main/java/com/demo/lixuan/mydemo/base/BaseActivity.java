@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.demo.lixuan.mydemo.BuildConfig;
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.Utils.UiUtils;
 
@@ -44,6 +46,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         initData();
         initListener();
         ActivityController.addActivity(this);
+
+        if (BuildConfig.DEBUG){
+            StrictMode.VmPolicy policy =new StrictMode.VmPolicy.Builder()
+                    .detectAll()
+                     .penaltyLog()
+                    .build();
+            StrictMode.setVmPolicy(policy);
+        }
     }
 
     public abstract int getLayoutResId();
@@ -101,5 +111,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             UiUtils.makeText("销毁所有活动");
         }
+    }
+
+    /**
+     * @param level
+     */
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
     }
 }

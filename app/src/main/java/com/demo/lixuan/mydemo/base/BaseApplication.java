@@ -43,5 +43,19 @@ public class BaseApplication extends Application{
         return mHandler;
     }
 
+    /**
+     * Leval 14 以前的检测内存
+     */
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+    }
 
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        switch (level){
+
+        }
+    }
 }
