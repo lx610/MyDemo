@@ -10,6 +10,8 @@ import java.util.concurrent.LinkedBlockingDeque;
  */
 
 public class MyVolley {
+    static LinkedBlockingDeque<StringRequest> mRequestLinkedBlockingDeque =new LinkedBlockingDeque(10);
+    static LinkedBlockingDeque<StringRequest> mCacheLinkedBlockingDeque =new LinkedBlockingDeque(10);
     public static VollyRequestQueue newRequestQueue(Context applicationContext) {
         return newRequestQueue();
     }
@@ -21,14 +23,32 @@ public class MyVolley {
 
     public static class VollyRequestQueue {
         public static final String GET = "GET";
-        LinkedBlockingDeque<StringRequest> mLinkedBlockingDeque =new LinkedBlockingDeque(10);
+
         public void add(StringRequest request){
-            mLinkedBlockingDeque.add(request);
+            mRequestLinkedBlockingDeque.add(request);
         }
 
         public void start() throws InterruptedException {
-            StringRequest request = mLinkedBlockingDeque.takeFirst();
-            request.doConnectTask();
+            int size = mRequestLinkedBlockingDeque.size();
+            int cacheSize = mCacheLinkedBlockingDeque.size();
+            for (int i = 0; i < size; i++) {
+                StringRequest request = mRequestLinkedBlockingDeque.takeFirst();
+               if (request.doConnectTask()){
+
+               }else {
+                   mCacheLinkedBlockingDeque.add(request);
+               }
+            }
+
+
+            for (int i = 0; i < cacheSize; i++) {
+                StringRequest request = mCacheLinkedBlockingDeque.takeFirst();
+                if (request.doConnectTask()){
+
+                }else {
+                    mCacheLinkedBlockingDeque.add(request);
+                }
+            }
         }
     }
 

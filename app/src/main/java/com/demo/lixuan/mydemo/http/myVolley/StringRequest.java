@@ -13,12 +13,17 @@ public class StringRequest {
 
     private HttpConnection mHttpConnection;
 
-    public StringRequest(String UrlType, String Url, final Response.Listener response, Response.ErrorListener errorListener) {
+    public StringRequest(String UrlType, String Url, final Response.Listener response, final Response.ErrorListener errorListener) {
         try {
             mHttpConnection = new HttpConnection(Url) {
                 @Override
                 public void responseData(int responseCode, String data) {
                     response.onResponse(responseCode, data);
+                }
+
+                @Override
+                public void responseError(int responseCode, String data) {
+                    errorListener.onErrorRespons( responseCode, data);
                 }
             };
         } catch (IOException e) {
@@ -27,12 +32,15 @@ public class StringRequest {
 
     }
 
-    public void doConnectTask(){
+    public boolean doConnectTask(){
+        boolean isConnect = false;
         try {
-            mHttpConnection.getConnect();
+            isConnect= mHttpConnection.getConnect()[0];
         } catch (IOException e) {
             e.printStackTrace();
+            isConnect=false;
         }
+        return isConnect;
     }
 
    public interface Response {
@@ -41,7 +49,7 @@ public class StringRequest {
         }
 
         public interface ErrorListener {
-            void onErrorRespons();
+            void onErrorRespons(int responseCode, String data);
 
         }
 

@@ -68,6 +68,7 @@
         <activity android:name=".java.designModel.DesignModelActivity"/>
         <activity android:name=".java.designModel.Stragety.StragetyModelAcitivity"/>
         <activity android:name=".java.designModel.shareObject.FlyWigthDesignModelActivity"/>
+        <activity android:name=".thread.ThreadActivity"/>
         <activity android:name=".http.HttpActivity"/>
 
 

@@ -1,6 +1,5 @@
 package com.demo.lixuan.mydemo.http.httpUrlConnect;
 
-import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -16,6 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
@@ -26,7 +26,7 @@ public abstract class HttpConnection  {
 
     private final HttpURLConnection mConnection;
     private final Handler mHandler;
-
+    static ExecutorService executor = Executors.newCachedThreadPool();
     public HttpConnection(String urlString) throws IOException,MalformedURLException{
         mHandler = new Handler(){
             @Override
@@ -47,8 +47,9 @@ public abstract class HttpConnection  {
 
     }
 
-    public void getConnect() throws IOException {
-        Executors.newCachedThreadPool().execute(new Runnable() {
+    public boolean[] getConnect() throws IOException {
+        final boolean[] isConectSucces = {false};
+        executor.execute(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -85,13 +86,48 @@ public abstract class HttpConnection  {
                             }
                         });
                         Log.d("kwwl","result============="+buffer.toString());
+                        isConectSucces[0] =true;
+                    }else if (responsCode>400){
+                        //得到响应流
+                        InputStream inputStream = mConnection.getInputStream();
+                        Object content = mConnection.getContent();
+                        Map<String, List<String>> heads = mConnection.getHeaderFields();
+                        final StringBuffer buffer =new StringBuffer();
+                        buffer.append("content - type ==" + mConnection.getContentType() + "\n");
+                        Set<String> headKey = heads.keySet();
+                        Iterator<String> headIterator = headKey.iterator();
+                        buffer.append("================head==================================" + "\n");
+                        while (headIterator.hasNext()){
+                            String headKeyString = headIterator.next();
+                            List headLsit = heads.get(headKeyString);
+                            int size = headLsit.size();
+                            for (int i = 0; i < size; i++) {
+                                String headContent = (String) headLsit.get(i);
+                                buffer.append(headKeyString + " : " + headContent + "\n");
+                            }
+
+                        }
+                        buffer.append("================head==================================" + "\n");
+                        //将响应流转换成字符串
+                        String result = is2String(inputStream);//将流转换为字符串。
+                        buffer.append(result);
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                responseError (responsCode,buffer.toString());
+                            }
+                        });
+                        Log.d("kwwl","result============="+buffer.toString());
+                        isConectSucces[0] =false;
+
                     }
                 } catch (IOException e) {
+                    isConectSucces[0] =false;
                     e.printStackTrace();
                 }
             }
         });
-
+        return isConectSucces;
     }
 
     private String is2String(InputStream inputStream) throws IOException {
@@ -107,4 +143,5 @@ public abstract class HttpConnection  {
     }
 
     abstract public void responseData(int responseCode, String data);
+    abstract public void responseError(int responseCode, String data);
 }

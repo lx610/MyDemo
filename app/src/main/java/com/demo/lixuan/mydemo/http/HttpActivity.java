@@ -16,6 +16,9 @@ import java.io.IOException;
  */
 
 public class HttpActivity extends LinearActivity {
+
+    private MyVolley.VollyRequestQueue mQueue;
+
     @Override
     public void initView() {
         final TextView textView = (TextView) generateTextButton("",null);
@@ -28,6 +31,11 @@ public class HttpActivity extends LinearActivity {
                         public void responseData(int responseCode, String data) {
                             textView.setText("");
                             textView.setText(data);
+                        }
+
+                        @Override
+                        public void responseError(int responseCode, String data) {
+
                         }
                     };
                     connection.getConnect();
@@ -46,6 +54,11 @@ public class HttpActivity extends LinearActivity {
                             textView.setText("");
                             textView.setText(data);
                         }
+
+                        @Override
+                        public void responseError(int responseCode, String data) {
+
+                        }
                     };
                     connection.getConnect();
                 } catch (IOException e) {
@@ -56,31 +69,65 @@ public class HttpActivity extends LinearActivity {
         mLlContainer.addView(generateTextButton("myVolly - baidu", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyVolley.VollyRequestQueue queue = MyVolley.newRequestQueue(getApplicationContext());
+                mQueue = MyVolley.newRequestQueue(getApplicationContext());
                 StringRequest stringRequest =new StringRequest(MyVolley.VollyRequestQueue.GET, UrlConst.BAIDU, new StringRequest.Response.Listener() {
                     @Override
                     public void onResponse(int responseCode, String data) {
-                        textView.setText("");
-                        textView.setText(data);
+                        textView.append("==============   BAIDU  =============");
+                        textView.append(data);
                     }
                 }, new StringRequest.Response.ErrorListener() {
                     @Override
-                    public void onErrorRespons() {
-
+                    public void onErrorRespons(int responseCode, String data) {
+                        textView.append("==============   BAIDU  =============");
+                        textView.append(data);
                     }
                 });
-                queue.add(stringRequest);
+                mQueue.add(stringRequest);
+            }
+        }));
+        mLlContainer.addView(generateTextButton("myVolly - taobao", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mQueue = MyVolley.newRequestQueue(getApplicationContext());
+                StringRequest stringRequest =new StringRequest(MyVolley.VollyRequestQueue.GET, UrlConst.TAOBAO, new StringRequest.Response.Listener() {
+                    @Override
+                    public void onResponse(int responseCode, String data) {
+                        textView.append("==============   TAOBAO  =============");
+                        textView.append(data);
+                    }
+                }, new StringRequest.Response.ErrorListener() {
+                    @Override
+                    public void onErrorRespons(int responseCode, String data) {
+                        textView.append("==============   TAOBAO  =============");
+                        textView.append(data);
+                    }
+                });
+                mQueue.add(stringRequest);
+            }
+        }));
+        mLlContainer.addView(generateTextButton("start myVolley", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 try {
-                    queue.start();
+                    mQueue.start();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         }));
+
+
+
+
         ScrollView scrollView =new ScrollView(getApplicationContext());
         scrollView.addView(textView);
         mLlContainer.addView(scrollView);
+
+
     }
+
+
 
     @Override
     public void initData() {
