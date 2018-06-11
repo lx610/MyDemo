@@ -42,7 +42,7 @@ public class LauchDeviceActivity extends LinearActivity {
     private boolean enablehandlerPic =false;
 
     //裁剪后的图片Uri路径，uritempFile为Uri类变量
-    Uri uriCropTempFile = Uri.parse("file://" + "/" + Environment.getExternalStorageDirectory().getPath() + "/" + "croptemp.jpg");
+    Uri uriCropTempFile = Uri.parse("file://" + "/" + Environment.getDownloadCacheDirectory().getPath() + "/" + "croptemp.jpg");
 
     @Override
     public void initView() {
@@ -51,7 +51,7 @@ public class LauchDeviceActivity extends LinearActivity {
 
         //创建临时存放
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            tempFile = new File(Environment.getExternalStorageDirectory(),
+            tempFile = new File(Environment.getDownloadCacheDirectory(),
                     "tempFile");
         } else {
             Toast.makeText(this, "请插入sd卡", Toast.LENGTH_SHORT).show();
