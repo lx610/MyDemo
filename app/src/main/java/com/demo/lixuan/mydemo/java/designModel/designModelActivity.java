@@ -7,10 +7,10 @@ import com.demo.lixuan.mydemo.java.designModel.Stragety.StragetyModelAcitivity;
 import com.demo.lixuan.mydemo.java.designModel.shareObject.FlyWigthDesignModelActivity;
 
 /**
- * Created by Administrator on 2018/6/4.
+ * Created by Administrator on 2018/6/12.
  */
 
-public class DesignModelActivity extends LinearActivity {
+public class DesignModelActivity extends LinearActivity{
     @Override
     public void initView() {
         mLlContainer.addView(generateTextButton("策略模式", new View.OnClickListener() {
