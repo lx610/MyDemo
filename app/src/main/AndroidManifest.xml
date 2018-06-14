@@ -72,6 +72,7 @@
         <activity android:name=".http.HttpActivity"/>
         <activity android:name=".thread.ThreadPoolActivity"/>
         <activity android:name=".thread.ThreadInterruptActivity"/>
+        <activity android:name=".widgt.cludeCircleImage.GiveStarsToFoucusActivity"/>
 
 
         <service android:name=".process.MessageService"
