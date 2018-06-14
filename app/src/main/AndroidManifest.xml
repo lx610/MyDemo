@@ -70,6 +70,8 @@
         <activity android:name=".java.designModel.shareObject.FlyWigthDesignModelActivity"/>
         <activity android:name=".thread.ThreadActivity"/>
         <activity android:name=".http.HttpActivity"/>
+        <activity android:name=".thread.ThreadPoolActivity"/>
+        <activity android:name=".thread.ThreadInterruptActivity"/>
 
 
         <service android:name=".process.MessageService"
