@@ -44,7 +44,7 @@ public class NineDotView extends FrameLayout {
             int childLeft = childeHight * posion;
             int childTop    =childeHight *lineNum;
             int right =childLeft + childeHight;
-            int childBottom = childeHight + childeHight;
+            int childBottom = childTop + childeHight;
             child.layout(childLeft,childTop,right,childBottom);
         }
 
@@ -102,7 +102,7 @@ public class NineDotView extends FrameLayout {
     }
 
     private void readPsw() {
-        
+
     }
 
 
