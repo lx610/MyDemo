@@ -23,7 +23,7 @@ public class DotView extends View {
     private boolean isOnTouch;//被按住的状态
     private int halfWidthDotRect;
     private Paint halfWhitePainter;//按住的时候出现扩大的圆
- 
+
 
     public DotView(Context context) {
         super(context);

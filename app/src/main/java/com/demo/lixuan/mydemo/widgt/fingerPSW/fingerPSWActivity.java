@@ -24,6 +24,7 @@ public class fingerPSWActivity extends LinearActivity {
         nineDotView.setLayoutParams(params);
         nineDotView.setBackgroundColor(Color.BLACK);
         nineDotView.setAlpha(0.7f);
+        nineDotView.setPadding(30,30,0,0);
         mLlContainer.addView(nineDotView);
     }
 
