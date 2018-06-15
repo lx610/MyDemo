@@ -20,6 +20,7 @@ public class NineDotView extends FrameLayout {
     private int viewHight;
     private int cellWidth;
     private int cellHeight;
+    private int mCellWidth;
 
     public NineDotView(Context context) {
         super(context);
@@ -32,6 +33,7 @@ public class NineDotView extends FrameLayout {
         super(context, attrs);
         init(context);
 
+
     }
 
     @Override
@@ -41,6 +43,7 @@ public class NineDotView extends FrameLayout {
             int posion = i % 3;
             View child=  getChildAt(i);
             int childeHight = child.getMeasuredHeight();//getHight是0
+            mCellWidth = childeHight;
             int childLeft = childeHight * posion;
             int childTop    =childeHight *lineNum;
             int right =childLeft + childeHight;
@@ -66,6 +69,7 @@ public class NineDotView extends FrameLayout {
         viewHight = getMeasuredHeight();
         cellWidth =viewWidth/3;
         cellHeight = viewHight/3;
+
         measureChildren(widthMeasureSpec,heightMeasureSpec);
     }
 
@@ -88,6 +92,7 @@ public class NineDotView extends FrameLayout {
                 // TODO: 2018/6/14 如果允许画线根据手指目前的位置连接直线
                 // TODO: 2018/6/14 如果连接到了一个点，更新起点
                 isDrawingPSW = checkDrawStatus(event);
+                moveToClickButton(event);
                 break;
             case MotionEvent.ACTION_UP:
                 // TODO: 2018/6/14 如果是画线状态，抬手后，开始输入密码
@@ -101,31 +106,42 @@ public class NineDotView extends FrameLayout {
         return super.onTouchEvent(event);
     }
 
+    private void moveToClickButton(MotionEvent event) {
+        if (event.getAction()==MotionEvent.ACTION_MOVE){
+            int x =(int) event.getX();
+            int y =(int)event.getY();
+            int lineNum = y / mCellWidth;
+            int position = x/mCellWidth;
+            int index = lineNum * 3 + position;
+            DotView clickChild = (DotView) getChildAt(index);
+            clickChild.growCricle();
+        }
+
+    }
+
     private void readPsw() {
 
     }
 
 
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent ev) {
-//        boolean isInterupt=true;
-//        switch (ev.getAction()){
-//            case MotionEvent.ACTION_DOWN:
-//                isInterupt=true;
-//                break;
-//            case MotionEvent.ACTION_MOVE:
-//                isInterupt=true;
-//                break;
-//            case MotionEvent.ACTION_UP:
-//                isInterupt=true;
-//                break;
-//            default:
-//                isInterupt=true;
-//                break;
-//        }
-//        return isInterupt;
-//
-//    }
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        int x =(int) ev.getX();
+        int y =(int)ev.getY();
+        boolean intercepted = false;
+        switch (ev.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                break;
+            case MotionEvent.ACTION_MOVE:
+                intercepted =true;
+//                moveToClickButton(ev);
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+        }
+        return intercepted;
+
+    }
 
     /**根据触摸位置判断，是否在输入密码
      * @return

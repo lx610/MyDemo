@@ -23,6 +23,7 @@ public class DotView extends View {
     private boolean isOnTouch;//被按住的状态
     private int halfWidthDotRect;
     private Paint halfWhitePainter;//按住的时候出现扩大的圆
+ 
 
     public DotView(Context context) {
         super(context);
@@ -87,22 +88,23 @@ public class DotView extends View {
         boolean getEvent = false;
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                isOnTouch=true;
+
                 getEvent=true;
                 growCricle();
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (isOnTouch=false){
-                    getEvent=true;
-                    growCricle();
-                }else if (isOnTouch=true){
-                    getEvent=true;
-                }else {
-                    getEvent=false;
-                }
+//                if (isOnTouch=false){
+//                    getEvent=true;
+//                    growCricle();
+//                }else if (isOnTouch=true){
+//                    getEvent=true;
+//                }else {
+//
+//                }
+                getEvent=false;
                 break;
             case MotionEvent.ACTION_UP:
-                isOnTouch=false;
+
                 deGrowCircle();
                 getEvent=true;
                 break;
@@ -117,8 +119,8 @@ public class DotView extends View {
     /**
      * 让园变小
      */
-    private void deGrowCircle() {
-
+    public void deGrowCircle() {
+        isOnTouch=false;
         ValueAnimator valueAnimate=ValueAnimator.ofInt(floatRect,halfWidthDotRect);
         valueAnimate.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -136,7 +138,8 @@ public class DotView extends View {
     /**
      * 让园变大
      */
-    private void growCricle() {
+    public void growCricle() {
+        isOnTouch=true;
         final IntEvaluator mEvaluate = new IntEvaluator();
         ValueAnimator valueAnimate=ValueAnimator.ofInt(floatRect,mViewWidth/2);
         valueAnimate.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
