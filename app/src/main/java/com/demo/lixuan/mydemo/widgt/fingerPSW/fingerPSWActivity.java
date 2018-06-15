@@ -13,6 +13,12 @@ import com.demo.lixuan.mydemo.base.publicLayout.LinearActivity;
 public class fingerPSWActivity extends LinearActivity {
     @Override
     public void initView() {
+        DotView dotView=new DotView  (this,1);
+        dotView.setMinimumWidth(80);
+        LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(80,80);
+        dotView.setLayoutParams(params1);
+
+        mLlContainer.addView(dotView);
         LinearLayout.LayoutParams params =new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         NineDotView nineDotView =new NineDotView(this);
         nineDotView.setLayoutParams(params);

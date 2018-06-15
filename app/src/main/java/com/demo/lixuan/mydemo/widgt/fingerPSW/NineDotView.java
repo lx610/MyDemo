@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 /**
  * 说明：9点手势密码，核心原理：9个点对应1-9的数字，
@@ -14,7 +15,7 @@ import android.view.ViewGroup;
  * Created by Administrator on 2018/6/14.
  */
 
-public class NineDotView extends ViewGroup {
+public class NineDotView extends FrameLayout {
     private int viewWidth;
     private int viewHight;
     private int cellWidth;
@@ -52,9 +53,9 @@ public class NineDotView extends ViewGroup {
     private void init(Context context) {
         for (int i = 1; i < 10; i++) {
             DotView dotView=new DotView(context,i);
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(80,80);
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(180,180);
             dotView.setLayoutParams(params);
-            addView(new DotView(context,i));
+            addView(dotView);
         }
     }
 
@@ -65,7 +66,6 @@ public class NineDotView extends ViewGroup {
         viewHight = getMeasuredHeight();
         cellWidth =viewWidth/3;
         cellHeight = viewHight/3;
-
         measureChildren(widthMeasureSpec,heightMeasureSpec);
     }
 
@@ -78,7 +78,6 @@ public class NineDotView extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 // TODO: 2018/6/14  如果按下了某个点，要开始画线
@@ -88,9 +87,12 @@ public class NineDotView extends ViewGroup {
             case MotionEvent.ACTION_MOVE:
                 // TODO: 2018/6/14 如果允许画线根据手指目前的位置连接直线
                 // TODO: 2018/6/14 如果连接到了一个点，更新起点
+                isDrawingPSW = checkDrawStatus(event);
                 break;
             case MotionEvent.ACTION_UP:
                 // TODO: 2018/6/14 如果是画线状态，抬手后，开始输入密码
+                isDrawingPSW = checkDrawStatus(event);
+                readPsw();
                 break;
             default:
                 break;
@@ -98,6 +100,32 @@ public class NineDotView extends ViewGroup {
 
         return super.onTouchEvent(event);
     }
+
+    private void readPsw() {
+        
+    }
+
+
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        boolean isInterupt=true;
+//        switch (ev.getAction()){
+//            case MotionEvent.ACTION_DOWN:
+//                isInterupt=true;
+//                break;
+//            case MotionEvent.ACTION_MOVE:
+//                isInterupt=true;
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                isInterupt=true;
+//                break;
+//            default:
+//                isInterupt=true;
+//                break;
+//        }
+//        return isInterupt;
+//
+//    }
 
     /**根据触摸位置判断，是否在输入密码
      * @return
