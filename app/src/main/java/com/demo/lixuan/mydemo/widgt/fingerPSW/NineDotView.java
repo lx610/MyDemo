@@ -2,11 +2,16 @@ package com.demo.lixuan.mydemo.widgt.fingerPSW;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import java.util.ArrayList;
 
 /**
  * 说明：9点手势密码，核心原理：9个点对应1-9的数字，
@@ -24,6 +29,10 @@ public class NineDotView extends FrameLayout {
 
     int dotWidth = 120;
     private int mDefaultGap;
+    private Paint pathPaint;
+    private Path mPath;
+    private ArrayList<DotView> mSelectDotList;
+    private android.graphics.Path mRecordPath = new Path();
 
     public NineDotView(Context context) {
         super(context);
@@ -77,12 +86,22 @@ public class NineDotView extends FrameLayout {
     }
 
     private void init(Context context) {
+        pathPaint = new Paint();
+        pathPaint.setColor(Color.GREEN);
+        pathPaint.setStyle(Paint.Style.STROKE);
+        pathPaint.setStrokeWidth(20.0f);
+
+        mPath = new Path();
+
         for (int i = 1; i < 10; i++) {
             DotView dotView=new DotView(context,i);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(dotWidth,dotWidth);
             dotView.setLayoutParams(params);
             addView(dotView);
         }
+
+        mSelectDotList = new ArrayList<>();
+
     }
 
     @Override
@@ -118,7 +137,7 @@ public class NineDotView extends FrameLayout {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         // TODO: 2018/6/14 画出9个点
-
+        canvas.drawPath(mPath,pathPaint);
     }
 
     @Override
@@ -132,8 +151,11 @@ public class NineDotView extends FrameLayout {
             case MotionEvent.ACTION_MOVE:
                 // TODO: 2018/6/14 如果允许画线根据手指目前的位置连接直线
                 // TODO: 2018/6/14 如果连接到了一个点，更新起点
+                mPath.reset();
+                mPath.addPath(mRecordPath);
                 isDrawingPSW = checkDrawStatus(event);
                 moveToClickButton(event);
+                mPath.lineTo(event.getX(),event.getY());
                 break;
             case MotionEvent.ACTION_UP:
                 // TODO: 2018/6/14 如果是画线状态，抬手后，开始输入密码
@@ -143,7 +165,7 @@ public class NineDotView extends FrameLayout {
             default:
                 break;
         }
-
+        invalidate();
         return super.onTouchEvent(event);
     }
 
@@ -208,12 +230,37 @@ public class NineDotView extends FrameLayout {
             int index = lineNum * 3 + position;
             DotView clickChild = (DotView) getChildAt(index);
             clickChild.growCricle();
+            mSelectDotList.add(clickChild);
+            if (mSelectDotList.size()==1){
+                if (clickChild.isOnTouch()){
+                    mRecordPath.moveTo(clickChild.getX() + mCellWidth/2,clickChild.getY() + mCellWidth/2);
+                }
+            }else {
+                mRecordPath.lineTo(clickChild.getX()+ mCellWidth/2,clickChild.getY() + + mCellWidth/2);
+                mRecordPath.moveTo(clickChild.getX()+ mCellWidth/2,clickChild.getY() + + mCellWidth/2);
+            }
+
+
         }
 
     }
 
     private void readPsw() {
+        ArrayList pswList = new ArrayList();
+        //清除绘画痕迹，读取密码
+        int dotSize = mSelectDotList.size();
+        for (int i = 0; i < dotSize; i++) {
+            DotView dot = mSelectDotList.get(i);
+            pswList.add( dot.getPsw());
+        }
 
+        for (int i = 0; i < dotSize; i++) {
+            DotView dot = mSelectDotList.get(i);
+            dot.deGrowCircle();
+        }
+        mSelectDotList.clear();
+        mRecordPath.reset();
+        mPath.reset();
     }
 
 

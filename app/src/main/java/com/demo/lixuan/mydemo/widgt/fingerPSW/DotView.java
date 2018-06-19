@@ -23,6 +23,7 @@ public class DotView extends View {
     private boolean isOnTouch;//被按住的状态
     private int halfWidthDotRect;
     private Paint halfWhitePainter;//按住的时候出现扩大的圆
+    private int mPsw;
 
 
     public DotView(Context context) {
@@ -40,6 +41,7 @@ public class DotView extends View {
     public DotView(Context context, int i) {
         super(context);
         initView(context);
+        mPsw = i;
     }
 
 
@@ -155,6 +157,14 @@ public class DotView extends View {
             }
         });
         valueAnimate.setDuration(600).start();
+    }
+
+    public boolean isOnTouch() {
+        return isOnTouch;
+    }
+
+    public int getPsw() {
+        return mPsw;
     }
 
     @Override
