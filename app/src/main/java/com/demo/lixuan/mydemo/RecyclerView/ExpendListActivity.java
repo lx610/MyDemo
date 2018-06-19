@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.demo.lixuan.mydemo.R;
@@ -40,6 +41,8 @@ public class ExpendListActivity extends BaseActivity {
     Button mBtExpend2;
     @BindView(R.id.tv_button)
     TextView mTvButton;
+    @BindView(R.id.scrollView)
+    ScrollView mScrollView;
 
 
     private TicketAdapter mTicketAdapter;
@@ -70,6 +73,9 @@ public class ExpendListActivity extends BaseActivity {
         list3.setAdapter(mTicketAdapter2);
 
         mTicketAdapter.addHeaderView(list3);
+
+        mRvList.setNestedScrollingEnabled(false);
+        mRvList2.setNestedScrollingEnabled(false);
     }
 
     @Override
@@ -113,16 +119,55 @@ public class ExpendListActivity extends BaseActivity {
         mRvList.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                scorelToHideButton(recyclerView, newState,mTvButton );
+                scorelToHideButton(recyclerView, newState, mTvButton);
             }
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+        mRvList2.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                scorelToHideButton(recyclerView, newState, mTvButton);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             }
         });
 
+
+//        //设置滑动监听动画
+//        mScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+//            float distence = mTvButton.getWidth();
+//            @Override
+//            public void onScrollChanged() {
+//                //滑动中
+//                if (!mIsScroll) {
+//                    ObjectAnimator animator = ObjectAnimator.ofFloat(mTvButton, "translationX",  0f,  -distence, -distence);
+//                    animator.setDuration(1000);
+//                    animator.start();
+//                    mIsScroll = true;
+//                }else {
+//                    //滑动到了底部
+//                    if (mScrollView.getChildAt(0).getHeight() - mScrollView.getHeight()
+//                            == mScrollView.getScrollY()){
+//                        ObjectAnimator animator = ObjectAnimator.ofFloat(mTvButton, "translationX", -distence, -0f, -0f);
+//                        animator.setDuration(1000);
+//                        animator.start();
+//                        mIsScroll = false;
+//                    }
+////                        滑动到了顶部
+//                    if(mScrollView.getScrollY() == 0){
+//                        ObjectAnimator animator = ObjectAnimator.ofFloat(mTvButton, "translationX", -distence, -0f, -0f);
+//                        animator.setDuration(1000);
+//                        animator.start();
+//                        mIsScroll = false;
+//                    }
+//                }
+//            }
+//        });
     }
 
 

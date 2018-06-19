@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.demo.lixuan.mydemo.BuildConfig;
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.Utils.UiUtils;
+import com.demo.lixuan.mydemo.base.http.HttpClient;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -119,5 +120,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void onTrimMemory(int level) {
         super.onTrimMemory(level);
+    }
+
+    public HttpClient loadDataFromHttp(String url, HttpClient httpClient){
+        httpClient.loadUrl(url);
+        return httpClient;
     }
 }
