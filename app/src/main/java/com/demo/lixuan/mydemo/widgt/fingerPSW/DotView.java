@@ -92,7 +92,7 @@ public class DotView extends View {
             case MotionEvent.ACTION_DOWN:
 
                 getEvent=true;
-                growCricle();
+//                growCricle();
                 break;
             case MotionEvent.ACTION_MOVE:
 //                if (isOnTouch=false){

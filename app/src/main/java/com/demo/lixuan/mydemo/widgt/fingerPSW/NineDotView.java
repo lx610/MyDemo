@@ -1,6 +1,7 @@
 package com.demo.lixuan.mydemo.widgt.fingerPSW;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,6 +11,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import com.demo.lixuan.mydemo.Utils.MD5Util;
+import com.demo.lixuan.mydemo.Utils.UiUtils;
 
 import java.util.ArrayList;
 
@@ -21,6 +25,11 @@ import java.util.ArrayList;
  */
 
 public class NineDotView extends FrameLayout {
+    public static final int STATUS_SET_PSW=10;
+    public static final int STATUS_CHECK_PSW=11;
+    public static final String SP_CODE="9DotCode";
+    public static final String SP_KEY_CODE="sp_key_code";
+
     private int viewWidth;
     private int viewHight;
     private int cellWidth;
@@ -33,6 +42,8 @@ public class NineDotView extends FrameLayout {
     private Path mPath;
     private ArrayList<DotView> mSelectDotList;
     private android.graphics.Path mRecordPath = new Path();
+    int mPswStatus =11;
+    private Context mContext;
 
     public NineDotView(Context context) {
         super(context);
@@ -85,7 +96,13 @@ public class NineDotView extends FrameLayout {
 
     }
 
+    public void setPswStatus(int status){
+        mPswStatus = status;
+    }
+
     private void init(Context context) {
+        mContext = context;
+
         pathPaint = new Paint();
         pathPaint.setColor(Color.GREEN);
         pathPaint.setStyle(Paint.Style.STROKE);
@@ -229,17 +246,20 @@ public class NineDotView extends FrameLayout {
 //            int position = x -getPaddingLeft()/mCellWidth;
             int index = lineNum * 3 + position;
             DotView clickChild = (DotView) getChildAt(index);
-            clickChild.growCricle();
-            mSelectDotList.add(clickChild);
-            if (mSelectDotList.size()==1){
-                if (clickChild.isOnTouch()){
-                    mRecordPath.moveTo(clickChild.getX() + mCellWidth/2,clickChild.getY() + mCellWidth/2);
+
+            if (mSelectDotList.size()==0){
+                if (!clickChild.isOnTouch()){
+                    mSelectDotList.add(clickChild);
+                    mRecordPath.moveTo(clickChild.getX()+ mCellWidth/2,clickChild.getY() + + mCellWidth/2);
                 }
             }else {
-                mRecordPath.lineTo(clickChild.getX()+ mCellWidth/2,clickChild.getY() + + mCellWidth/2);
-                mRecordPath.moveTo(clickChild.getX()+ mCellWidth/2,clickChild.getY() + + mCellWidth/2);
+                if (!clickChild.isOnTouch()){
+                    mSelectDotList.add(clickChild);
+                    mRecordPath.lineTo(clickChild.getX()+ mCellWidth/2,clickChild.getY() + + mCellWidth/2);
+                    mRecordPath.moveTo(clickChild.getX()+ mCellWidth/2,clickChild.getY() + + mCellWidth/2);
+                }
             }
-
+            clickChild.growCricle();
 
         }
 
@@ -247,11 +267,36 @@ public class NineDotView extends FrameLayout {
 
     private void readPsw() {
         ArrayList pswList = new ArrayList();
+        StringBuilder stringBuilder =new StringBuilder();
         //清除绘画痕迹，读取密码
         int dotSize = mSelectDotList.size();
         for (int i = 0; i < dotSize; i++) {
             DotView dot = mSelectDotList.get(i);
             pswList.add( dot.getPsw());
+            stringBuilder.append(dot.getPsw());
+        }
+
+        switch (mPswStatus){
+            case STATUS_CHECK_PSW:
+                String code = MD5Util.MD5_String(stringBuilder.toString());
+                SharedPreferences sp = mContext.getSharedPreferences(SP_CODE,Context.MODE_PRIVATE);
+                String codeSaved = sp.getString(SP_KEY_CODE, "");
+
+                if (code.equals(codeSaved)){
+                    UiUtils.makeText("解锁");
+                }else {
+                    UiUtils.makeText("密码错误");
+                }
+
+                break;
+            case STATUS_SET_PSW:
+                String code2 = MD5Util.MD5_String(stringBuilder.toString());
+                SharedPreferences sp2 =mContext.getSharedPreferences(SP_CODE,Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor =sp2.edit();
+                editor.putString(SP_KEY_CODE,code2);
+                editor.commit();
+                UiUtils.makeText("密码保存");
+                break;
         }
 
         for (int i = 0; i < dotSize; i++) {
