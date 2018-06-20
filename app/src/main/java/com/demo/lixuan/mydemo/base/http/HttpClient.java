@@ -6,7 +6,7 @@ package com.demo.lixuan.mydemo.base.http;
 
 public abstract class HttpClient<T> {
 
-    abstract void loadUrl(String url);
-    abstract void success(T t);
-    abstract void failed();
+    public abstract void loadUrl(String url);
+    public abstract void success(T t);
+    protected abstract void failed();
 }

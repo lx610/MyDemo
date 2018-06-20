@@ -74,6 +74,7 @@
         <activity android:name=".thread.ThreadInterruptActivity"/>
         <activity android:name=".widgt.cludeCircleImage.GiveStarsToFoucusActivity"/>
         <activity android:name=".widgt.fingerPSW.fingerPSWActivity"/>
+        <activity android:name=".http.okhttp.OkhttpActivity"/>
 
 
         <service android:name=".process.MessageService"

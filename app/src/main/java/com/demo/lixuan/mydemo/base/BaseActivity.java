@@ -122,8 +122,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onTrimMemory(level);
     }
 
-    public HttpClient loadDataFromHttp(String url, HttpClient httpClient){
-        httpClient.loadUrl(url);
+    public HttpClient loadDataFromHttp(final String url, final HttpClient httpClient){
+                httpClient.loadUrl(url);
         return httpClient;
     }
 }
