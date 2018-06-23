@@ -45,7 +45,7 @@ public class FlowFingerActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mButton = (TextView) generateTextButton("pull to move", new View.OnClickListener() {
               @Override
               public void onClick(View v) {

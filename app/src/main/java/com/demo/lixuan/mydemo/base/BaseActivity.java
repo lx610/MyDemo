@@ -43,7 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutResId());
         //绑定到butterknife
         mUnbinder = ButterKnife.bind(this);
-        initView();
+        initView(savedInstanceState);
         initData();
         initListener();
         ActivityController.addActivity(this);
@@ -58,7 +58,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public abstract int getLayoutResId();
-    public abstract void initView();
+    public abstract void initView(Bundle savedInstanceState);
     public abstract void initData();
     public abstract void initListener();
 

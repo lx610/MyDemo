@@ -1,6 +1,7 @@
 package com.demo.lixuan.mydemo.widgt.fingerPSW;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -13,7 +14,7 @@ import com.demo.lixuan.mydemo.base.publicLayout.LinearActivity;
 
 public class fingerPSWActivity extends LinearActivity {
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 //        DotView dotView=new DotView  (this,1);
 //        dotView.setMinimumWidth(80);
 //        LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(80,80);

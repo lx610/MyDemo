@@ -4,14 +4,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 import com.demo.lixuan.mydemo.base.BaseViewpageFactory;
-import com.demo.lixuan.mydemo.viewpage.RecyclerViewPageFactory;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import butterknife.BindView;
@@ -40,7 +37,7 @@ public class ViewPageActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 
         mViewpage.setAdapter(new RecyclerPageAdapter(getSupportFragmentManager()));
         mTab.setViewPager(mViewpage);

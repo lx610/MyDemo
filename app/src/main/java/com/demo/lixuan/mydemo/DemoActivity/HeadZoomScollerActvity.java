@@ -47,7 +47,7 @@ public class HeadZoomScollerActvity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mList.setLayoutManager(new LinearLayoutManager(this));
         mDatalist = new ArrayList();
         mAdapter = new ImageAdapter(mDatalist);

@@ -75,6 +75,7 @@
         <activity android:name=".widgt.cludeCircleImage.GiveStarsToFoucusActivity"/>
         <activity android:name=".widgt.fingerPSW.fingerPSWActivity"/>
         <activity android:name=".http.okhttp.OkhttpActivity"/>
+        <activity android:name=".http.webView.WebViewActivity"/>
 
 
         <service android:name=".process.MessageService"

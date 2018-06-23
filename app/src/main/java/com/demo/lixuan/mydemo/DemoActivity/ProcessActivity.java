@@ -36,7 +36,7 @@ public class ProcessActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView(generateTextButton("to firstActivity", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

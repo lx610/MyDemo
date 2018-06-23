@@ -1,5 +1,7 @@
 package com.demo.lixuan.mydemo.JNIDemo.NDKDemo;
 
+import android.os.Bundle;
+
 import com.demo.lixuan.mydemo.base.publicLayout.LinearActivity;
 
 /**
@@ -8,7 +10,7 @@ import com.demo.lixuan.mydemo.base.publicLayout.LinearActivity;
 
 public class NDKActivity extends LinearActivity {
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 
     }
 

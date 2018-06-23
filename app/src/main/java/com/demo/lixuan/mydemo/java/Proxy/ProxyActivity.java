@@ -30,7 +30,9 @@ public class ProxyActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
+
+
         mLlContainer.addView(generateTextButton(" text proxy", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,12 +40,23 @@ public class ProxyActivity extends BaseActivity {
                 Subject subject = new SubjectImpl();
 
                 Subject proxy = (Subject) Proxy.newProxyInstance(SubjectImpl.class.getClassLoader(), SubjectImpl.class.getInterfaces(), new SubjectInvocationHandler(subject));
-                proxy.test();
+                proxy.test("add new text");
 
 //                System.out.println(proxy);
             }
         }));
 
+        mLlContainer.addView(generateTextButton(" text only interface proxy", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Subject subject = creatInterface(Subject.class);
+                subject.test("add new only interface proxy");
+                Object object = creatInterface(Object.class);
+
+
+            }
+        }));
         LogText = (TextView) generateTextButton("", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +65,32 @@ public class ProxyActivity extends BaseActivity {
         });
         mLlContainer.addView(LogText);
 
+        if(null != savedInstanceState)
+        {
+            int IntTest = savedInstanceState.getInt("IntTest");
+            String StrTest = savedInstanceState.getString("StrTest");
+            LogText.setText(StrTest);
+        }
+    }
+
+    private<T> T creatInterface(final Class<T> subjectClass) {
+        T proxy = (T) Proxy.newProxyInstance(subjectClass.getClassLoader(), new Class[]{subjectClass}, new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                System.out.println("before method!");
+                LogText.append("invoke : " + "before method! onlyInterface" + "\n");
+                Object object = new Object();
+                if (method.getDeclaringClass() == Object.class) {
+                    return method.invoke(this, args);
+                }
+                String text= (String) method.invoke(this, args);
+                LogText.append("invoke : " + "get method String === " + text+"\n");
+                System.out.println("after method!");
+                LogText.append("invoke : " + "after method!  onlyInterface" + "\n");
+                return proxy;
+            }
+        });
+        return proxy;
     }
 
     @Override
@@ -74,14 +113,15 @@ public class ProxyActivity extends BaseActivity {
     public class SubjectImpl implements Subject {
 
         @Override
-        public void test() {
+        public void test(String s) {
             System.out.println("This is test method");
             LogText.append("SubjectImpl : " + "This is test method" + "\n");
+            LogText.append("SubjectImpl : " + "add String   =  " + s + "\n");
         }
     }
 
     public interface Subject {
-        void test();
+        void test(String s);
     }
 
     public class SubjectInvocationHandler implements InvocationHandler {
@@ -106,4 +146,10 @@ public class ProxyActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("StrTest",LogText.getText().toString() );
+        super.onSaveInstanceState(outState);
+
+    }
 }

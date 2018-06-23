@@ -45,7 +45,7 @@ public class LauchDeviceActivity extends LinearActivity {
     Uri uriCropTempFile = Uri.parse("file://" + "/" + Environment.getDownloadCacheDirectory().getPath() + "/" + "croptemp.jpg");
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mImageView = new ImageView(this);
         handlerPermission();
 

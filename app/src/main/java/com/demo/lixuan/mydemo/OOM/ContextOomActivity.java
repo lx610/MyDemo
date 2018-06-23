@@ -41,7 +41,7 @@ public class ContextOomActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mManage = OomManager.getInstence(ContextOomActivity.this);
         mManage.setOnThreadListener(new OomManager.OnThreadListener() {
             @Override

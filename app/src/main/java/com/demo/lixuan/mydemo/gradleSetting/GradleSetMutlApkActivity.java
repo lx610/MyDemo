@@ -26,7 +26,7 @@ public class GradleSetMutlApkActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView(generateTextButton(BuildConfig.APPLICATION_ID + "", new View.OnClickListener() {
             @Override
             public void onClick(View view) {

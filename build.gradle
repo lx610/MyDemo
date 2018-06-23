@@ -118,6 +118,8 @@ ext{
             "rxbinding-recyclerview-v7": "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:0.4.0",
             "rxpermissions"            : "com.tbruyelle.rxpermissions:rxpermissions:0.9.1@aar",
 
+            "timber"                   : "com.jakewharton.timber:timber:4.1.2",
+
     ]
 
 }

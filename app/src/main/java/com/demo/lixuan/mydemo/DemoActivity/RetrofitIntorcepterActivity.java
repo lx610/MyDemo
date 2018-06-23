@@ -1,5 +1,7 @@
 package com.demo.lixuan.mydemo.DemoActivity;
 
+import android.os.Bundle;
+
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 import com.google.gson.Gson;
@@ -43,7 +45,7 @@ public class RetrofitIntorcepterActivity extends BaseActivity {
     }
 
 
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 
     }
 

@@ -48,7 +48,7 @@ public class NestLinearLayoutActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         View view = View.inflate(this, R.layout.bar_top, null);
         mNestLinearLayout.addTopBar(view);
 

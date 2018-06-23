@@ -1,5 +1,6 @@
 package com.demo.lixuan.mydemo.thread;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
@@ -40,7 +41,7 @@ public class ThreadPoolActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 
         //        mLlBtContainer.addView(generateTextButton("Thread", new View.OnClickListener() {
 //            @Override

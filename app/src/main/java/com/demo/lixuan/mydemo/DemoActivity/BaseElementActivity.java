@@ -36,7 +36,7 @@ public class BaseElementActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView(generateTextButton("ContentProvide", new View.OnClickListener() {
             @Override
             public void onClick(View view) {

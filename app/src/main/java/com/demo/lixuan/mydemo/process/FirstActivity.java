@@ -79,7 +79,7 @@ public class FirstActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView( generateTextButton("sencondActivity", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

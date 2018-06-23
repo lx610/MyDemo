@@ -42,7 +42,7 @@ public class WidgtActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView(generateTextButton("widgtButton", new View.OnClickListener() {
             @Override
             public void onClick(View view) {

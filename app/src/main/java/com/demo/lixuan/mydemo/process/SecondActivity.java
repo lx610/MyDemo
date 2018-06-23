@@ -38,7 +38,7 @@ public class SecondActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView( generateTextButton("SecondActivity", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

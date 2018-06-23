@@ -1,5 +1,6 @@
 package com.demo.lixuan.mydemo.java.staticTest;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,7 +17,7 @@ public class JavaStatictestActivity extends LinearActivity {
     OutClass.inerClass inerClass = outClass.new inerClass();
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLogText = (TextView) generateTextButton("", new View.OnClickListener() {
             @Override
             public void onClick(View view) {

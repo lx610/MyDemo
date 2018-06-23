@@ -28,7 +28,7 @@ public class JavaDemoActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView(generateTextButton("jump to proxy", new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -30,7 +30,7 @@ public class DragActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mTextView1 = (TextView) generateTextButton("1",null);
         mTextView9 = (TextView) generateTextButton("9",null);
         mRootGridLayout.addView(mTextView1);

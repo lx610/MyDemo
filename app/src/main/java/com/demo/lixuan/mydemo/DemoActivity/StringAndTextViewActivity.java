@@ -32,7 +32,7 @@ public class StringAndTextViewActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 
     }
 

@@ -40,7 +40,7 @@ public class ContentProvideActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView(generateTextButton("create db", new View.OnClickListener() {
             @Override
             public void onClick(View view) {

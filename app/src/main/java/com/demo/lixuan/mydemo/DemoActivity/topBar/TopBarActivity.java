@@ -38,7 +38,7 @@ public class TopBarActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlBtContainer.addView(generateBtToStartActivity(new NestLinearLayoutActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new HideTopBarActvitiy()));
     }

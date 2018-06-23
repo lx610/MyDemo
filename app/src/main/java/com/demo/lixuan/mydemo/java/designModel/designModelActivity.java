@@ -1,5 +1,6 @@
 package com.demo.lixuan.mydemo.java.designModel;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.demo.lixuan.mydemo.base.publicLayout.LinearActivity;
@@ -12,7 +13,7 @@ import com.demo.lixuan.mydemo.java.designModel.shareObject.FlyWigthDesignModelAc
 
 public class DesignModelActivity extends LinearActivity{
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView(generateTextButton("策略模式", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

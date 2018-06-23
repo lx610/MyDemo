@@ -1,6 +1,7 @@
 package com.demo.lixuan.mydemo.widgt.cludeCircleImage;
 
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -46,7 +47,7 @@ public class GiveStarsToFoucusActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         world_shopping_search_input = (EditText) findViewById(R.id.world_shopping_search_input);
         keywordsFlow = (KeywordsFlow) findViewById(R.id.keywordsflow);
 

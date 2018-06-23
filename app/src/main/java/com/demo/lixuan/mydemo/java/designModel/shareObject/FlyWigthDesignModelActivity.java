@@ -1,5 +1,6 @@
 package com.demo.lixuan.mydemo.java.designModel.shareObject;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,7 +21,7 @@ public class FlyWigthDesignModelActivity extends LinearActivity {
     private List mList1;
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         final TextView logText = (TextView) generateTextButton("",null);
 
         mLlContainer.addView(generateTextButton("打印菜单数量", new View.OnClickListener() {

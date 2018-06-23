@@ -62,7 +62,7 @@ public class CamerActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         if (checkCameraHardware(this)) {
             //如果没有注册静态相机权限，这里的camera会永远是null
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

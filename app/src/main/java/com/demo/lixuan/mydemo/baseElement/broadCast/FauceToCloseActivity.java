@@ -26,7 +26,7 @@ public class FauceToCloseActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView(generateTextButton("close all activity", new View.OnClickListener() {
             @Override
             public void onClick(View view) {

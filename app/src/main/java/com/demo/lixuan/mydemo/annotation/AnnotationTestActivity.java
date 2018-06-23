@@ -39,7 +39,7 @@ public class AnnotationTestActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlBtContainer.addView(generateTextButton("show method value", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

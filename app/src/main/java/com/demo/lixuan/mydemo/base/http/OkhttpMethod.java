@@ -5,10 +5,16 @@ import android.util.Log;
 
 import com.demo.lixuan.mydemo.http.okhttp.CharactorHandler;
 import com.demo.lixuan.mydemo.http.okhttp.ZipHelper;
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.lang.reflect.Array;
+import java.lang.reflect.GenericArrayType;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
+import java.lang.reflect.WildcardType;
 import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
 
@@ -30,12 +36,13 @@ import okio.BufferedSource;
  * Created by Administrator on 2018/6/19.
  */
 
-public abstract class OkhttpMethod<T> extends HttpClient<T>{
+public abstract class OkhttpMethod<T extends Object> extends HttpClient<T>{
     private static final String TAG = "OkhttpMethod";
 
 
     private static OkHttpClient.Builder mOkHttpBuild;
     private final OkHttpClient mOkHttpClient;
+    private final Context mContext;
 
     public OkhttpMethod(Context context) {
 
@@ -43,6 +50,7 @@ public abstract class OkhttpMethod<T> extends HttpClient<T>{
         //   日志拦截器
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         File cacheFile = new File(context.getCacheDir(), "cache");
+        mContext = context;
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         mOkHttpClient = new OkHttpClient.Builder()
@@ -78,6 +86,8 @@ public abstract class OkhttpMethod<T> extends HttpClient<T>{
         Request requset =requestBuilder.build();
 
             Call call  =mOkHttpClient.newCall(requset);
+
+
             call.enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
@@ -86,10 +96,17 @@ public abstract class OkhttpMethod<T> extends HttpClient<T>{
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                    Log.d(TAG, "onResponse: " + response.body());
-
-                    Log.d(TAG, "onResponse: " + response.body());
-                    Log.d(TAG, "onResponse: " + response.body());
+                    Gson gson = new Gson();
+                    String JsonString = response.body().string();
+                    Log.d(TAG, "onResponse: " + JsonString);
+                    Class<T> persistentClass;
+                    persistentClass=(Class<T>)getSuperClassGenricType(getClass(), 0);
+                    Log.d(TAG, "onResponse:c class " + persistentClass.getSimpleName());
+                    persistentClass=(Class<T>)getRawType(getClass());
+                    Log.d(TAG, "onResponse:c class " + persistentClass.getSimpleName());
+                    T userBasicInfo = null;
+//                    T userBasicInfo = (T) gson.fromJson(JsonString, persistentClass.getClass());
+                    success(userBasicInfo);
                 }
             });
 
@@ -149,5 +166,60 @@ public abstract class OkhttpMethod<T> extends HttpClient<T>{
 
             return originalResponse;//不能return null 会报 network interceptor must call proceed() exactly once
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static Class<?> getSuperClassGenricType(final Class clazz, final int index) {
+
+        //返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type。
+        Type genType = clazz.getGenericSuperclass();
+
+        if (!(genType instanceof ParameterizedType)) {
+            return Object.class;
+        }
+        //返回表示此类型实际类型参数的 Type 对象的数组。
+        Type[] params = ((ParameterizedType) genType).getActualTypeArguments();
+
+        if (index >= params.length || index < 0) {
+            return Object.class;
+        }
+        if (!(params[index] instanceof Class)) {
+            return Object.class;
+        }
+
+        return (Class) params[index];
+    }
+
+    static Class<?> getRawType(Type type) {
+        if (type == null) throw new NullPointerException("type == null");
+
+        if (type instanceof Class<?>) {
+            // Type is a normal class.
+            return (Class<?>) type;
+        }
+        if (type instanceof ParameterizedType) {
+            ParameterizedType parameterizedType = (ParameterizedType) type;
+
+            // I'm not exactly sure why getRawType() returns Type instead of Class. Neal isn't either but
+            // suspects some pathological case related to nested classes exists.
+            Type rawType = parameterizedType.getRawType();
+            if (!(rawType instanceof Class)) throw new IllegalArgumentException();
+            return (Class<?>) rawType;
+        }
+        if (type instanceof GenericArrayType) {
+            Type componentType = ((GenericArrayType) type).getGenericComponentType();
+            return Array.newInstance(getRawType(componentType), 0).getClass();
+        }
+        if (type instanceof TypeVariable) {
+            // We could use the variable's bounds, but that won't work if there are multiple. Having a raw
+            // type that's more general than necessary is okay.
+            return Object.class;
+        }
+        if (type instanceof WildcardType) {
+            return getRawType(((WildcardType) type).getUpperBounds()[0]);
+        }
+
+        throw new IllegalArgumentException("Expected a Class, ParameterizedType, or "
+                + "GenericArrayType, but <" + type + "> is of type " + type.getClass().getName());
     }
 }

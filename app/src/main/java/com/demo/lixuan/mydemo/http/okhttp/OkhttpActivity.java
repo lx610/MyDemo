@@ -1,5 +1,7 @@
 package com.demo.lixuan.mydemo.http.okhttp;
 
+import android.os.Bundle;
+
 import com.demo.lixuan.mydemo.base.http.OkhttpMethod;
 import com.demo.lixuan.mydemo.base.publicLayout.LinearActivity;
 
@@ -9,7 +11,7 @@ import com.demo.lixuan.mydemo.base.publicLayout.LinearActivity;
 
 public class OkhttpActivity extends LinearActivity{
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 
     }
 

@@ -65,7 +65,7 @@ public class ViewAndImageBannerBarActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 
     }
 

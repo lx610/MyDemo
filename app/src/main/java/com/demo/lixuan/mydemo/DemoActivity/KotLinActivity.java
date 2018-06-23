@@ -20,7 +20,7 @@ public class KotLinActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         llContainer.addView(generateTextButton("kotlinIndex", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

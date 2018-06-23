@@ -50,7 +50,7 @@ public class  MainActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 //        mLlBtContainer= (LinearLayout) findViewById(R.id.ll_bt_container);
         mLlBtContainer.addView(generateBtToStartActivity(new RetrofitIntorcepterActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new ExpendListActivity()));

@@ -57,7 +57,7 @@ public class ExpendListActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mRvList = (RecyclerView) findViewById(R.id.rv_list);
         mBtExpend = (Button) findViewById(R.id.bt_expend);
         RecyclerView list3 = new RecyclerView(this);

@@ -1,5 +1,6 @@
 package com.demo.lixuan.mydemo.http;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -9,6 +10,7 @@ import com.demo.lixuan.mydemo.http.httpUrlConnect.HttpConnection;
 import com.demo.lixuan.mydemo.http.myVolley.MyVolley;
 import com.demo.lixuan.mydemo.http.myVolley.StringRequest;
 import com.demo.lixuan.mydemo.http.okhttp.OkhttpActivity;
+import com.demo.lixuan.mydemo.http.webView.WebViewActivity;
 
 import java.io.IOException;
 
@@ -21,13 +23,21 @@ public class HttpActivity extends LinearActivity {
     private MyVolley.VollyRequestQueue mQueue;
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView(generateTextButton("okhttpActivty", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivityFromAct(OkhttpActivity.class);
             }
         }));
+
+        mLlContainer.addView(generateTextButton("WebViewActivity", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityFromAct(WebViewActivity.class);
+            }
+        }));
+
 
         final TextView textView = (TextView) generateTextButton("",null);
         mLlContainer.addView(generateTextButton("httpUrlConnect - taobao", new View.OnClickListener() {

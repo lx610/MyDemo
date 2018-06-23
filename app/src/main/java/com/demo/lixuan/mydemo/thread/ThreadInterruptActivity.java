@@ -1,5 +1,6 @@
 package com.demo.lixuan.mydemo.thread;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ public class ThreadInterruptActivity extends LinearActivity {
     private static TextView mLogText;
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLogText = (TextView) generateTextButton("",null);
 
         mLlContainer.addView(generateTextButton("start from FixThreadPool", new View.OnClickListener() {

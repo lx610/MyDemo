@@ -1,5 +1,6 @@
 package com.demo.lixuan.mydemo.java.designModel.Stragety;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.demo.lixuan.mydemo.Utils.UiUtils;
@@ -15,7 +16,7 @@ public class StragetyModelAcitivity extends LinearActivity{
     KuiHuaBaoDian mKuiHuaBaoDian = new KuiHuaBaoDian();
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView(generateTextButton(" 学习九阴真经", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

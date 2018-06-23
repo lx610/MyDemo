@@ -25,7 +25,7 @@ public class ServiceActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView(generateTextButton("front service", new View.OnClickListener() {
             @Override
             public void onClick(View view) {

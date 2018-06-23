@@ -1,5 +1,7 @@
 package com.demo.lixuan.mydemo.widgt.clock;
 
+import android.os.Bundle;
+
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 
@@ -14,7 +16,7 @@ public class ClockActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 //      RoundClockView clockView =   new RoundClockView(this);
 //        LinearLayout.LayoutParams params =new LinearLayout.LayoutParams(500,400);
 //        clockView.setLayoutParams(params);

@@ -42,7 +42,7 @@ public class InterpolatorActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         final InterPolatorTextView changeBt = generaterInterPolatorTextView("DeceleraterInterplator", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

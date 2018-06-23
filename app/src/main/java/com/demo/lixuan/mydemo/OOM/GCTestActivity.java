@@ -1,5 +1,6 @@
 package com.demo.lixuan.mydemo.OOM;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -30,7 +31,7 @@ public class GCTestActivity extends LinearActivity {
 
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         final TextView logText= (TextView) generateTextButton("", new View.OnClickListener() {
             @Override
             public void onClick(View view) {

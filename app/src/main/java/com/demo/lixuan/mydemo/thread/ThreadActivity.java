@@ -1,5 +1,6 @@
 package com.demo.lixuan.mydemo.thread;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.demo.lixuan.mydemo.base.publicLayout.LinearActivity;
@@ -22,7 +23,7 @@ public class ThreadActivity extends LinearActivity {
 
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mLlContainer.addView(generateTextButton("Threadpool", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

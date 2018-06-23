@@ -51,7 +51,7 @@ public class ButtonActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 
     }
 

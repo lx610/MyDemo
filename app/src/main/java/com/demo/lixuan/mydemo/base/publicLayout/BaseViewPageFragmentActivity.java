@@ -27,7 +27,7 @@ abstract public class BaseViewPageFragmentActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mAdapter = new BaseFragmentPageAdapter(getSupportFragmentManager());
         mViewpage.setAdapter(mAdapter);
         setFragmentList();

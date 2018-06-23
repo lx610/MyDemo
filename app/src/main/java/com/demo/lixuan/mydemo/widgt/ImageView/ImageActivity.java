@@ -1,5 +1,7 @@
 package com.demo.lixuan.mydemo.widgt.ImageView;
 
+import android.os.Bundle;
+
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 
@@ -24,7 +26,7 @@ public class ImageActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 
     }
 

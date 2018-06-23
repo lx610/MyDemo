@@ -46,7 +46,7 @@ public class HideTopBarActvitiy extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mHideBar = generaterBarView();
         mHideBar.setVisibility(View.GONE);
         mList.setLayoutManager(new LinearLayoutManager(this));

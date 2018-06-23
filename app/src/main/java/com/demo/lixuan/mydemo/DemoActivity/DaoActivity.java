@@ -1,5 +1,7 @@
 package com.demo.lixuan.mydemo.DemoActivity;
 
+import android.os.Bundle;
+
 import com.demo.lixuan.mydemo.base.BaseActivity;
 
 /**
@@ -20,7 +22,7 @@ public class DaoActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 
     }
 
