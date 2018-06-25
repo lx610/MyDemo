@@ -28,6 +28,13 @@ public class DeviceActivity extends LinearActivity {
                 startActivity(new Intent(DeviceActivity.this, LauchDeviceActivity.class));
             }
         }));
+
+        mLlContainer.addView(generateTextButton("device info", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DeviceActivity.this, DeviceInfoActivity.class));
+            }
+        }));
     }
 
     @Override
