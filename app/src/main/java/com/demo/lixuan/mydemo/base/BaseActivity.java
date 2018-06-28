@@ -66,6 +66,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        //注册广播
         IntentFilter intentFilter =new IntentFilter();
         intentFilter.addAction("com.lixuan.demo.ACT_OFFLINE");
         mReciever = new ForeOffLine();

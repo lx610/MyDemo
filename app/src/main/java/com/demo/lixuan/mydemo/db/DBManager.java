@@ -21,7 +21,7 @@ public class DBManager extends SQLiteOpenHelper{
 
     private final static String DATABASE_NAME = "BOOKS.db";
     private final static int DATABASE_VERSION = 1;
-    private final static String TABLE_NAME = "books_table";
+    private final static String     TABLE_NAME = "books_table";
     public final static String BOOK_ID = "book_id";
     public final static String BOOK_NAME = "book_name";
     public final static String BOOK_AUTHOR = "book_author";

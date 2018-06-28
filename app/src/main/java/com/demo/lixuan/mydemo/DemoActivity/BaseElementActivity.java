@@ -8,6 +8,8 @@ import android.widget.LinearLayout;
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 import com.demo.lixuan.mydemo.baseElement.ContentProvideActivity;
+import com.demo.lixuan.mydemo.baseElement.broadCast.DynamicBoardCastActivity;
+import com.demo.lixuan.mydemo.baseElement.broadCast.OrderBroadCastActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +43,18 @@ public class BaseElementActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(BaseElementActivity.this, ContentProvideActivity.class));
+            }
+        }));
+        mLlContainer.addView(generateTextButton("DynamicBoardCastActivity", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BaseElementActivity.this, DynamicBoardCastActivity.class));
+            }
+        }));
+        mLlContainer.addView(generateTextButton("OrderBroadCastActivity", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BaseElementActivity.this, OrderBroadCastActivity.class));
             }
         }));
     }
