@@ -81,6 +81,7 @@
         <activity android:name=".device.DeviceInfoActivity"/>
         <activity android:name=".baseElement.broadCast.DynamicBoardCastActivity"/>
         <activity android:name=".baseElement.broadCast.OrderBroadCastActivity"/>
+        <activity android:name=".OOM.MakeOOMActivity"/>
 
         <service android:name=".process.MessageService"
             android:process=":remote"
