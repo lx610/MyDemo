@@ -54,22 +54,22 @@ public class TopBarActivity extends BaseActivity {
     }
 
 
-    private TextView generateBtToStartActivity(final Activity activity) {
-        TextView button = new TextView(this);
-        button.setText(activity.getClass().getSimpleName());
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(TopBarActivity.this, activity.getClass()));
-            }
-        });
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(400, 160);
-        button.setBackgroundColor(Color.YELLOW);
-        params.setMargins(10, 10, 10, 10);
-        button.setLayoutParams(params);
-        button.setPadding(10, 10, 10, 10);
-        return button;
-    }
+//    private TextView generateBtToStartActivity(final Activity activity) {
+//        TextView button = new TextView(this);
+//        button.setText(activity.getClass().getSimpleName());
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(TopBarActivity.this, activity.getClass()));
+//            }
+//        });
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(400, 160);
+//        button.setBackgroundColor(Color.YELLOW);
+//        params.setMargins(10, 10, 10, 10);
+//        button.setLayoutParams(params);
+//        button.setPadding(10, 10, 10, 10);
+//        return button;
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

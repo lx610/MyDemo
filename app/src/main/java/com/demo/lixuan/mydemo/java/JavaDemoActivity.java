@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 import com.demo.lixuan.mydemo.java.Proxy.ProxyActivity;
-import com.demo.lixuan.mydemo.java.designModel.DesignModelActivity;
+import com.demo.lixuan.mydemo.java.designModel.designModelActivity;
 import com.demo.lixuan.mydemo.java.staticTest.OutClassAndInerClassActivity;
 
 import butterknife.BindView;
@@ -39,7 +39,7 @@ public class JavaDemoActivity extends BaseActivity {
         mLlContainer.addView(generateTextButton("设计模式", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityFromAct( DesignModelActivity.class);
+                startActivityFromAct( designModelActivity.class);
             }
         }));
 

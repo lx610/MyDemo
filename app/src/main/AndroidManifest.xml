@@ -67,7 +67,7 @@
         <activity android:name=".widgt.clock.ClockActivity"/>
         <activity android:name=".animation.AnimationActivity"/>
         <activity android:name=".animation.drag.DragActivity"/>
-        <activity android:name=".java.designModel.DesignModelActivity"/>
+        <activity android:name=".java.designModel.designModelActivity"/>
         <activity android:name=".java.designModel.Stragety.StragetyModelAcitivity"/>
         <activity android:name=".java.designModel.shareObject.FlyWigthDesignModelActivity"/>
         <activity android:name=".thread.ThreadActivity"/>
@@ -82,6 +82,10 @@
         <activity android:name=".baseElement.broadCast.DynamicBoardCastActivity"/>
         <activity android:name=".baseElement.broadCast.OrderBroadCastActivity"/>
         <activity android:name=".OOM.MakeOOMActivity"/>
+        <activity android:name=".baselayout.BaseLayoutActivity"/>
+        <activity android:name=".baselayout.scollerView.ScrollerWithRecyclerActivity"/>
+        <activity android:name=".baselayout.webView.WebViewActivity"/>
+        <activity android:name=".widgt.cardPageView.CardPageActivity"/>
 
         <service android:name=".process.MessageService"
             android:process=":remote"

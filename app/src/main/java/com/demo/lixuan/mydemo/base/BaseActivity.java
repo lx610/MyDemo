@@ -1,9 +1,11 @@
 package com.demo.lixuan.mydemo.base;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -15,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.demo.lixuan.mydemo.BuildConfig;
+import com.demo.lixuan.mydemo.MainActivity;
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.Utils.UiUtils;
 import com.demo.lixuan.mydemo.base.http.HttpClient;
@@ -101,6 +104,24 @@ public abstract class BaseActivity extends AppCompatActivity {
         textBt.setOnClickListener(oncliclickLiener);
         return textBt;
     }
+
+    public TextView generateBtToStartActivity(final Activity activity) {
+        TextView button = new TextView(this);
+        button.setText(activity.getClass().getSimpleName());
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BaseActivity.this, activity.getClass()));
+            }
+        });
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(400, 160);
+        button.setBackgroundColor(Color.YELLOW);
+        params.setMargins(10, 10, 10, 10);
+        button.setLayoutParams(params);
+        button.setPadding(10, 10, 10, 10);
+        return button;
+    }
+
 
     public void startActivityFromAct(Class activityClass){
         startActivity(new Intent(BaseActivity.this,activityClass));

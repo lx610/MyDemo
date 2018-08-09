@@ -1,1 +1,1 @@
-include ':app', ':accountbook', ':plugtest'
+include ':app', ':accountbook', ':plugtest', ':commonresource'

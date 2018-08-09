@@ -26,6 +26,7 @@ import com.demo.lixuan.mydemo.annotation.AnnotationTestActivity;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 import com.demo.lixuan.mydemo.baseElement.broadCast.FauceToCloseActivity;
 import com.demo.lixuan.mydemo.baseElement.service.ServiceActivity;
+import com.demo.lixuan.mydemo.baselayout.BaseLayoutActivity;
 import com.demo.lixuan.mydemo.device.DeviceActivity;
 import com.demo.lixuan.mydemo.gradleSetting.GradleSetMutlApkActivity;
 import com.demo.lixuan.mydemo.http.HttpActivity;
@@ -74,6 +75,8 @@ public class  MainActivity extends BaseActivity {
         mLlBtContainer.addView(generateBtToStartActivity(new JavaDemoActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new DeviceActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new HttpActivity()));
+        mLlBtContainer.addView(generateBtToStartActivity(new BaseLayoutActivity()));
+
 
     }
 
@@ -87,7 +90,7 @@ public class  MainActivity extends BaseActivity {
 
     }
 
-    private TextView generateBtToStartActivity(final Activity activity) {
+    public TextView generateBtToStartActivity(final Activity activity) {
         TextView button = new TextView(this);
         button.setText(activity.getClass().getSimpleName());
         button.setOnClickListener(new View.OnClickListener() {

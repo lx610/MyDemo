@@ -10,6 +10,7 @@ import com.demo.lixuan.mydemo.base.BaseActivity;
 import com.demo.lixuan.mydemo.widgt.ImageView.ImageActivity;
 import com.demo.lixuan.mydemo.widgt.button.ButtonActivity;
 import com.demo.lixuan.mydemo.widgt.calendar.CalendarActivity;
+import com.demo.lixuan.mydemo.widgt.cardPageView.CardPageActivity;
 import com.demo.lixuan.mydemo.widgt.clock.ClockActivity;
 import com.demo.lixuan.mydemo.widgt.cludeCircleImage.GiveStarsToFoucusActivity;
 import com.demo.lixuan.mydemo.widgt.fingerPSW.fingerPSWActivity;
@@ -78,6 +79,12 @@ public class WidgtActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(WidgtActivity.this,fingerPSWActivity.class));
+            }
+        }));
+        mLlContainer.addView(generateTextButton("CardPageActivity ", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(WidgtActivity.this,CardPageActivity.class));
             }
         }));
     }
