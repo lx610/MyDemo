@@ -24,11 +24,9 @@ package com.demo.lixuan.mydemo.widgt.cardPageView;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.database.DataSetObserver;
-import android.graphics.ImageFormat;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -37,9 +35,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnimationSet;
 import android.widget.FrameLayout;
-import android.widget.ListAdapter;
 
 //import com.nineoldandroids.animation.Animator;
 //import com.nineoldandroids.animation.AnimatorListenerAdapter;
@@ -50,7 +46,7 @@ import android.widget.ListAdapter;
  * @author chiemy
  * 
  */
-public class CardView extends FrameLayout {
+public class CardPageViewDownMove extends FrameLayout {
 	private static final String TAG = "CardView";
 	private static final int ITEM_SPACE = 40;
 	private static final int DEF_MAX_VISIBLE = 4;
@@ -74,17 +70,17 @@ public class CardView extends FrameLayout {
 		void onCardClick(View view, int position);
 	}
 
-	public CardView(Context context, AttributeSet attrs, int defStyle) {
+	public CardPageViewDownMove(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		init();
 	}
 
-	public CardView(Context context, AttributeSet attrs) {
+	public CardPageViewDownMove(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init();
 	}
 
-	public CardView(Context context) {
+	public CardPageViewDownMove(Context context) {
 		super(context);
 		init();
 	}
@@ -130,7 +126,23 @@ public class CardView extends FrameLayout {
 		mListAdapter = adapter;
 		adapter.registerDataSetObserver(mDataSetObserver);
 		removeAllViews();
-		ensureFull();
+		refreshCardLayout();
+	}
+
+	/**
+	 * @param position
+	 */
+	public void setCurrentPosition(int position){
+		int itemCount = mListAdapter.getCount();
+		if (position>itemCount){
+			return;
+		}
+		if (playMode==FLAG_PALY_MODE_REPETE){
+			mNextAdapterPosition=itemCount+position;
+		}else {
+			mNextAdapterPosition=position;
+		}
+		refreshCardLayout();
 	}
 
 	public void setOnCardClickListener(OnCardClickListener listener) {
@@ -138,7 +150,7 @@ public class CardView extends FrameLayout {
 	}
 
 
-	private void ensureFull() {
+	private void refreshCardLayout() {
 		int itemCount = mListAdapter.getCount();
 		while (mNextAdapterPosition%itemCount < itemCount
 				&& getChildCount() < mMaxVisible) {
@@ -162,7 +174,7 @@ public class CardView extends FrameLayout {
 			view.setScaleX(((mMaxVisible - index - 1) / (float) mMaxVisible) * 0.2f + 0.8f);
 			int topMargin = (mMaxVisible - index - 1) * itemSpace;
 			view.setTranslationY(topMargin);
-			view.setAlpha(mNextAdapterPosition == 0 ? 1 : 0.5f);
+//			view.setAlpha(mNextAdapterPosition == 0 ? 1 : 0.5f);
 
 			LayoutParams params = (LayoutParams) view.getLayoutParams();
 			if (params == null) {
@@ -237,6 +249,7 @@ public class CardView extends FrameLayout {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		switch (event.getAction()) {
+
 		case MotionEvent.ACTION_MOVE:
 			if (goDown()) {
 				downY = -1;
@@ -304,7 +317,7 @@ public class CardView extends FrameLayout {
 
 				topView.setEnabled(true);
 				removeView(topView);//把第一张卡牌从布局中移除
-				ensureFull();
+				refreshCardLayout();
 				final int count = getChildCount();
 				for (int i = 0; i < count; i++) {
 					final View view = getChildAt(i);
@@ -383,37 +396,7 @@ public class CardView extends FrameLayout {
 
 			}
 		});
-//		anim.setListener(new AnimatorListenerAdapter() {
-//			@Override
-//			public void onAnimationEnd(Animator animation) {
-//				topView.setEnabled(true);
-//				removeView(topView);
-//				ensureFull();
-//				final int count = getChildCount();
-//				for (int i = 0; i < count; i++) {
-//					final View view = getChildAt(i);
-//					float scaleX = ViewHelper.getScaleX(view)
-//							+ ((float) 1 / mMaxVisible) * 0.2f;
-//					float tranlateY = ViewHelper.getTranslationY(view)
-//							+ itemSpace;
-//					if (i == count - 1) {
-//						bringToTop(view);
-//					} else {
-//						if ((count == mMaxVisible && i != 0)
-//								|| count < mMaxVisible) {
-//
-//							ViewPropertyAnimator
-//									.animate(view)
-//									.translationY(tranlateY)
-//									.setInterpolator(
-//											new AccelerateInterpolator())
-//									.setListener(null).scaleX(scaleX)
-//									.setDuration(200);
-//						}
-//					}
-//				}
-//			}
-//		});
+
 		return true;
 	}
 
@@ -488,6 +471,8 @@ public class CardView extends FrameLayout {
 		case MotionEvent.ACTION_MOVE:
 			if (currentX>currentY){
 //				float distance = currentY - downY;
+				View view =getChildAt(0);
+
 				float distance = currentX - downX;
 				if (distance<0){//向左滑动
 					if (Math.abs(distance) > mTouchSlop/2) {
@@ -497,7 +482,7 @@ public class CardView extends FrameLayout {
 
 			}
 //
-			break;
+//			break;
 		}
 		return false;
 	}

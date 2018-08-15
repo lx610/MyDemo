@@ -44,7 +44,7 @@ public class AnimationActivity extends LinearActivity {
         mLlContainer.addView(generateTextButton("wigdt animat", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AnimationActivity.this,AnimationActivity.class));
+                startActivity(new Intent(AnimationActivity.this, com.demo.lixuan.mydemo.DemoActivity.AnimationActivity .class));
             }
         }));
         mLlContainer.addView(generateTextButton("drag activity", new View.OnClickListener() {

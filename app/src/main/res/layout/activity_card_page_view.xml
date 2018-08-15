@@ -3,14 +3,20 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-<com.demo.lixuan.mydemo.widgt.cardPageView.CardView
+<com.demo.lixuan.mydemo.widgt.cardPageView.CardPageViewLeftMove
     android:id="@+id/card_list"
-    android:layout_width="360dp"
-    android:layout_height="400dp"/>
+    android:layout_gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
     <com.demo.lixuan.mydemo.widgt.cardPageView.DotTab
         android:id="@+id/dot_tab"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="20dp"/>
+    <Button
+        android:id="@+id/bt_jump"
+        android:text="跳到5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

@@ -7,4 +7,23 @@
         <attr name="border_overlay" format="boolean" />
     </declare-styleable>
 
+
+    <declare-styleable name="wallet_info_input_view">attrs_wallet
+        <attr name="title_text" format="string"/>
+        <attr name="input_enable" format="boolean"/>
+        <attr name="input_text" format="string"/>
+        <attr name="input_hint" format="string"/>
+        <attr name="right_button" >
+            <enum name="no_button" value="0"/>
+            <enum name="right_arrow" value="1"/>
+            <enum name="camera" value="2"/>
+            <enum name="right_arrow_with_text" value="3"/>
+        </attr>
+        <attr name="input_type" format="enum">
+            <enum name="text" value="0"/>
+            <enum name="phone" value="1"/>
+            <enum name="bank_card_no" value="2"/>
+            <enum name="identify_card_no" value="3"/>
+        </attr>
+    </declare-styleable>
 </resources>
