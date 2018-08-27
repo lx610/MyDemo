@@ -1,16 +1,12 @@
 package com.demo.lixuan.mydemo.widgt.cardPageView;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.demo.lixuan.mydemo.R;
-import com.demo.lixuan.mydemo.Utils.UiUtils;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 
 import java.util.ArrayList;
@@ -21,7 +17,10 @@ import java.util.List;
  */
 
 public class CardPageActivity extends BaseActivity implements CardPageViewLeftMove.OnCardClickListener {
+    private static final String TAG = "CardPageActivity";
     private ArrayList<String> list;
+    private DoubleSelcetDailog mWindow;
+    private MyCardAdapter mAdapter;
 
     @Override
     public int getLayoutResId() {
@@ -35,14 +34,14 @@ public class CardPageActivity extends BaseActivity implements CardPageViewLeftMo
         cardView.setOnCardClickListener(this);
 //        cardView.setItemSpace(Utils.convertDpToPixelInt(this, 20));
 
-        MyCardAdapter adapter = new MyCardAdapter(this);
-        adapter.addAll(generateList());
-        cardView.setAdapter(adapter);
+        mAdapter = new MyCardAdapter(this);
+        mAdapter.addAll(generateList());
+        cardView.setAdapter(mAdapter);
         cardView.setPlayMode(CardPageViewLeftMove.FLAG_PALY_MODE_REPETE);
 
         final DotTab dotTab = (DotTab) findViewById(R.id.dot_tab);
         dotTab.generateDots(list.size());
-        adapter.setOnItemSelectListener(new CardAdapter.OnTopItemChangeListener() {
+        mAdapter.setOnItemSelectListener(new QuickCardHorizonSkipAdapter.OnTopItemChangeListener() {
             @Override
             public void refreshTopPosion(int topPosition) {
                 dotTab.setPositionDotOnclick(topPosition);
@@ -56,6 +55,8 @@ public class CardPageActivity extends BaseActivity implements CardPageViewLeftMo
                 cardView.setCurrentPosition(5);
             }
         });
+        mWindow = new DoubleSelcetDailog(this);
+        mWindow.setAlertText("jing adfasdfsadfsadfad");
     }
 
     @Override
@@ -65,7 +66,33 @@ public class CardPageActivity extends BaseActivity implements CardPageViewLeftMo
 
     @Override
     public void initListener() {
+        mWindow.setOnDissmissListener(new DoubleSelcetDailog.OnCancelClickListener() {
+            @Override
+            public void onClick() {
+                mAdapter.setDeleteVisiabel(false);
+            }
+        });
 
+        mWindow.setOkOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick:    onclick");
+            }
+        });
+
+        mAdapter.setOnDeleteCardListener(new MyCardAdapter.OnDeleteCardListener() {
+            @Override
+            public void onClick(int position, View convertView, ViewGroup parent) {
+                mWindow.showAtCenter(CardPageActivity.this);
+            }
+        });
+
+        mWindow.setOnDissmissListener(new DoubleSelcetDailog.OnCancelClickListener() {
+            @Override
+            public void onClick() {
+                mAdapter.setDeleteVisiabel(false);
+            }
+        });
     }
 
     private List<String> generateList() {
@@ -85,39 +112,78 @@ public class CardPageActivity extends BaseActivity implements CardPageViewLeftMo
 
     }
 
-    public class MyCardAdapter extends CardAdapter<String>{
-
-        public MyCardAdapter(Context context) {
-            super(context);
-        }
-
-
-        @Override
-        protected View getCardView(final int position,
-                                   View convertView, ViewGroup parent) {
-            if(convertView == null) {
-                LayoutInflater inflater = LayoutInflater.from(CardPageActivity.this);
-                convertView = inflater.inflate(R.layout.item_card_page, parent, false);
-            }
-            RelativeLayout relativeLayout=convertView.findViewById(R.id.rl_root);
-            TextView tv = (TextView) convertView.findViewById(R.id.textView1);
-            final String text = getItem(position%list.size());
-            tv.setText(text);
-            if (position%list.size()==2){
-                relativeLayout.setBackgroundColor(getResources().getColor(R.color.pink));
-            }
-            relativeLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    UiUtils.makeText(position + text + "被点击");
-                }
-            });
-
-            return convertView;
-        }
-
-
-
-
-    }
+//    public class MyCardAdapter extends QuickCardHorizonSkipAdapter<String> {
+//
+//        boolean isShowDelete;
+//        private FrameLayout mFlDetelet;
+//
+//        public MyCardAdapter(Context context) {
+//            super(context);
+//        }
+//
+//
+//        @Override
+//        protected View getCardView(final int position,
+//                                   View convertView, ViewGroup parent) {
+//            if(convertView == null) {
+//                LayoutInflater inflater = LayoutInflater.from(CardPageActivity.this);
+//                convertView = inflater.inflate(R.layout.item_card_page, parent, false);
+//            }
+//            RelativeLayout relativeLayout=convertView.findViewById(R.id.rl_root);
+//            mFlDetelet = convertView.findViewById(R.id.fl_delete);
+//            TextView tv = (TextView) convertView.findViewById(R.id.textView1);
+//            final String text = getItem(position%list.size());
+//            tv.setText(text);
+//            if (position%list.size()==2){
+//                relativeLayout.setBackgroundColor(getResources().getColor(R.color.pink));
+//            }
+//            relativeLayout.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    UiUtils.makeText(position + text + "被点击");
+//                }
+//            });
+//
+//            relativeLayout.setOnTouchListener(new OnDoubleClickListener(new OnDoubleClickListener.DoubleClickCallback() {
+//                @Override
+//                public void onDoubleClick() {
+//                    UiUtils.makeText(position + text + "被双击了");
+//                    setDeleteVisiabel(true);
+//                }
+//            }));
+//
+//            mFlDetelet.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    mWindow.showAtCenter(CardPageActivity.this);
+//                }
+//            });
+//            return convertView;
+//        }
+//
+//        public void setDeleteVisiabel(boolean isVisiable){
+//            if (isVisiable){
+//                mFlDetelet.setVisibility(View.VISIBLE);
+//                isShowDelete =true;
+//            }else {
+//                mFlDetelet.setVisibility(View.GONE);
+//                isShowDelete =false;
+//            }
+//        }
+//
+//        @Override
+//        public boolean getTurnPageDisEnable() {
+//            if (isShowDelete){
+//                return true;
+//            }else {
+//                return false;
+//            }
+//        }
+//
+//
+//        @Override
+//        public boolean InterceptActionMove(View topView, MotionEvent ev, float downX, float downY) {
+//            return true;
+//        }
+//    }
 }
