@@ -242,7 +242,6 @@ public class CardPageViewDownMove extends FrameLayout {
 		if (topView != null) {
 			topView.setOnClickListener(listener);
 		}
-
 	}
 
 	float downX, downY;
@@ -516,18 +515,9 @@ public class CardPageViewDownMove extends FrameLayout {
 		public void onClick(View v) {
 			if (mListener != null) {
 				mListener.onCardClick(v, topPosition);
-
-			}
-			if (mListAdapter.getOnItemClickListener()!=null){
-				BaseCardAdapter.OnItemClickListener itemlistener = mListAdapter.getOnItemClickListener();
-				itemlistener.onItemClick(v, topPosition);
 			}
 		}
 	};
-
-	public void setListener(OnClickListener listener) {
-		this.listener = listener;
-	}
 
 	public int getTopPosition() {
 		return topPosition;

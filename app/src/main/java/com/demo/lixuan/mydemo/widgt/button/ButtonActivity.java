@@ -14,7 +14,7 @@ import com.demo.lixuan.mydemo.base.BaseActivity;
 import com.demo.lixuan.mydemo.widgt.ClickDivideButton;
 import com.demo.lixuan.mydemo.widgt.DivideButton;
 import com.demo.lixuan.mydemo.widgt.TextDivideButton;
-import com.demo.lixuan.mydemo.widgt.cardPageView.DoubleSelcetDailog;
+
 import com.demo.lixuan.mydemo.widgt.pupwindow.DeleteAlertWindow;
 
 import java.io.FileOutputStream;
@@ -50,7 +50,7 @@ public class ButtonActivity extends BaseActivity {
     @BindView(R.id.iv_image)
     ImageView mIvImage;
     private String mDecodePath;
-    private DoubleSelcetDailog mWindow;
+
     private DeleteAlertWindow mDeleteAlertWindow;
 
     @Override
@@ -60,9 +60,6 @@ public class ButtonActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mWindow = new DoubleSelcetDailog(this);
-        mWindow.setAlertText("asdfsadfasdfsadfsdfasfdf");
-
         mDeleteAlertWindow = new DeleteAlertWindow(this);
     }
 

@@ -257,34 +257,28 @@ public class CardPageViewLeftMove extends FrameLayout {
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_MOVE:
 			Log.d(TAG, "onTouchEvent: =================MotionEvent.ACTION_MOVE");
-//			float distanceX =Math.abs(currentX - downX);
-//			float moveX =downX - currentX;
-//			float distanceY =Math.abs(currentY - downY);
-//			if (distanceX>distanceY){//向左滑动
-////					topView.setTranslationX(currentX - downX);
-//				topView.scrollTo((int) moveX,0);
-////					if (topView.getTranslationX()<topView.getWidth()/2||topView.getTranslationX()>topView.getWidth()/2){
-//				float distence = Math.abs(topView.getTranslationX());
-//				if (distanceX>topView.getWidth()/2){
-//					Log.d(TAG, "MotionEvent.ACTION_MOVE distanceX>topView.getWidth()/2: distanceX:====" + distanceX);
-//					if (turnPage(event)) {
-//						downY = -1;
-//					}
-//					isGoBackPosition=false;
-//				}
-//			}
-			isGoBackPosition=mListAdapter.moveTopView(topView,event,downX,downY);
-			if (!isGoBackPosition){
-				if (turnPage(event)) {
+			float distanceX =Math.abs(currentX - downX);
+			float moveX =downX - currentX;
+			float distanceY =Math.abs(currentY - downY);
+			if (distanceX>distanceY){//向左滑动
+//					topView.setTranslationX(currentX - downX);
+				topView.scrollTo((int) moveX,0);
+//					if (topView.getTranslationX()<topView.getWidth()/2||topView.getTranslationX()>topView.getWidth()/2){
+				float distence = Math.abs(topView.getTranslationX());
+				if (distanceX>topView.getWidth()/2){
+					Log.d(TAG, "MotionEvent.ACTION_MOVE distanceX>topView.getWidth()/2: distanceX:====" + distanceX);
+					if (turnPage(event)) {
 						downY = -1;
 					}
+					isGoBackPosition=false;
+				}
 			}
+			isGoBackPosition=true;
 			break;
 
 			case MotionEvent.ACTION_UP:
 				Log.d(TAG, "onTouchEvent: =================MotionEvent.ACTION_UP");
-//				reBackTopView(topView,event,downX,downY);
-				mListAdapter.rebackToView(topView,event,downX,downY);
+				reBackTopView(topView,event,downX,downY);
 				break;
 		}
 		return super.onTouchEvent(event);
@@ -321,26 +315,26 @@ public class CardPageViewLeftMove extends FrameLayout {
 //	   							topView.setTranslationY(value);
 //				           }
 //         });
-//		ValueAnimator translationYanimator;
-//		float startPoitX = downX - event.getX();
-//		if (event.getX()-downX>0){//往右边滑
-////			translationYanimator = ValueAnimator.ofFloat(event.getX(), event.getX() + topView.getWidth());
-//			translationYanimator = ValueAnimator.ofInt((int)startPoitX, (int)startPoitX - topView.getWidth());
-//		}else {//往左边滑
-////			translationYanimator = ValueAnimator.ofFloat(event.getX(), event.getX() - topView.getWidth());
-//			translationYanimator = ValueAnimator.ofInt((int)startPoitX, (int)startPoitX +(int)topView.getWidth());
-//		}
+		ValueAnimator translationYanimator;
+		float startPoitX = downX - event.getX();
+		if (event.getX()-downX>0){//往右边滑
+//			translationYanimator = ValueAnimator.ofFloat(event.getX(), event.getX() + topView.getWidth());
+			translationYanimator = ValueAnimator.ofInt((int)startPoitX, (int)startPoitX - topView.getWidth());
+		}else {//往左边滑
+//			translationYanimator = ValueAnimator.ofFloat(event.getX(), event.getX() - topView.getWidth());
+			translationYanimator = ValueAnimator.ofInt((int)startPoitX, (int)startPoitX +(int)topView.getWidth());
+		}
 
-//		translationYanimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-//			@Override
-//			public void onAnimationUpdate(ValueAnimator animation) {
-//				Integer value = (Integer) animation.getAnimatedValue();
-////				Float value = (Float) animation.getAnimatedValue();
-//				topView.scrollTo(value,0);
-//
-////				topView.setTranslationX(value);
-//			}
-//		});
+		translationYanimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+			@Override
+			public void onAnimationUpdate(ValueAnimator animation) {
+				Integer value = (Integer) animation.getAnimatedValue();
+//				Float value = (Float) animation.getAnimatedValue();
+				topView.scrollTo(value,0);
+
+//				topView.setTranslationX(value);
+			}
+		});
 //		translationYanimator.start();
 //		ValueAnimator alphaYanimator = ValueAnimator.ofFloat(1, 0);
 //		alphaYanimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -351,10 +345,9 @@ public class CardPageViewLeftMove extends FrameLayout {
 //			}
 //		});
 //		alphaYanimator.start();
-//		AnimatorSet animatorSet =new AnimatorSet();
-		AnimatorSet animatorSet = mListAdapter.getTurnPageAnimator(topView,event,downX,downY);
-//		animatorSet.setDuration(300);
-//		animatorSet.playTogether(translationYanimator);
+		AnimatorSet animatorSet =new AnimatorSet();
+		animatorSet.setDuration(300);
+		animatorSet.playTogether(translationYanimator);
 		animatorSet.start();
 		//==========================把第一张卡牌移除的动画 end ==========================
 
@@ -504,24 +497,18 @@ public class CardPageViewLeftMove extends FrameLayout {
 			break;
 		case MotionEvent.ACTION_MOVE:
 			Log.d(TAG, "onInterceptTouchEvent:  MotionEvent.ACTION_MOVE");
-			if (mListAdapter.getTurnPageDisEnable()){
-				return false;
-			}
-			return mListAdapter.InterceptActionMove(topView,ev,downX,downY);
-//			return true;
+			return true;
 		case MotionEvent.ACTION_UP:
 			Log.d(TAG, "onInterceptTouchEvent:  MotionEvent.ACTION_UP");
-//
-//			float distanceX2 = Math.abs(currentX - downX);
-//			if (distanceX2>topView.getWidth()/2){
-//				return false;
-//			}
-//			if (distanceX2<mTouchSlop*2){
-//				return false;//单击的时候允许item相应点击事件
-//			}else {
-//				return true;
-//			}
-			return mListAdapter.InterceptActionUp(topView,ev,downX,downY);
+			float distanceX2 = Math.abs(currentX - downX);
+			if (distanceX2>topView.getWidth()/2){
+				return false;
+			}
+			if (distanceX2<mTouchSlop*2){
+				return false;//单击的时候允许item相应点击事件
+			}else {
+				return true;
+			}
 			case MotionEvent.ACTION_POINTER_UP:
 				Log.d(TAG, "onInterceptTouchEvent: MotionEvent==== ACTION_POINTER_UP");
 				return false;

@@ -12,18 +12,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class QuickCardAdapter<T> extends BaseCardAdapter {
+public abstract class CardAdapter<T> extends BaseCardAdapter {
 	private final Context mContext;
 	private OnTopItemChangeListener mOnItemSelectListener;
 
 	private ArrayList<T> mData;
 
-	public QuickCardAdapter(Context context) {
+	public CardAdapter(Context context) {
 		mContext = context;
 		mData = new ArrayList<T>();
 	}
 
-	public QuickCardAdapter(Context context, Collection<? extends T> items) {
+	public CardAdapter(Context context, Collection<? extends T> items) {
 		mContext = context;
 		mData = new ArrayList<T>(items);
 	}
