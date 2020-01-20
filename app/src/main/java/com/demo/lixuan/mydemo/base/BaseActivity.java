@@ -1,6 +1,7 @@
 package com.demo.lixuan.mydemo.base;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -39,6 +40,7 @@ import butterknife.Unbinder;
 public abstract class BaseActivity extends AppCompatActivity {
     private Unbinder mUnbinder;
     private ForeOffLine mReciever;
+    private Application.ActivityLifecycleCallbacks mActivityLifecycleCallbacks;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,6 +91,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         mUnbinder.unbind();
         ActivityController.removeActivity(this);
+        if (mActivityLifecycleCallbacks != null) {
+            mActivityLifecycleCallbacks.onActivityDestroyed(this);
+        }
     }
 
     public View generateTextButton(String buttonName, View.OnClickListener oncliclickLiener) {
@@ -147,5 +152,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     public HttpClient loadDataFromHttp(final String url, final HttpClient httpClient){
                 httpClient.loadUrl(url);
         return httpClient;
+    }
+
+    public void setActivityLifecycleCallbacks(Application.ActivityLifecycleCallbacks callbacks) {
+        mActivityLifecycleCallbacks = callbacks;
     }
 }

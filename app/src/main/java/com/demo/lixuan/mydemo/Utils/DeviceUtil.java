@@ -16,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Locale;
 
 /**
  * Created by tiansj on 14/12/30.
@@ -85,6 +86,52 @@ public class DeviceUtil {
         context.getWindowManager().getDefaultDisplay().getMetrics(dm);
         return dm.heightPixels;
     }
+
+
+
+    /**
+     * 获取当前手机系统版本号
+     *
+     * @return  系统版本号
+     */
+    public static String getSystemVersion() {
+        return android.os.Build.VERSION.RELEASE;
+    }
+
+    /**
+     * 获取手机型号
+     *
+     * @return  手机型号
+     */
+    public static String getSystemModel() {
+        return android.os.Build.MODEL;
+    }
+
+    /**
+     * 获取手机厂商
+     *
+     * @return  手机厂商
+     */
+    public static String getDeviceBrand() {
+        String brand = Build.BRAND;
+        String manufacturer = getManufacturer();
+        // 有的手机型号，手机厂商信息中包含设备制造商的信息，这里做处理，手机型号不显示设备制造商信息
+        if(brand != null && manufacturer != null && brand.contains(manufacturer)){
+            return brand;
+        }
+        return manufacturer + " " + brand;
+    }
+
+    /**
+     * 获取设备制造商
+     *
+     * @return  设备制造商
+     */
+    public static String getManufacturer() {
+        return android.os.Build.MANUFACTURER;
+    }
+
+    /**
 
     public static String getIMSI(Context context) {
         try {
