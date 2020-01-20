@@ -1,5 +1,6 @@
 package com.demo.lixuan.mydemo.viewpage;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.demo.lixuan.mydemo.base.BaseViewpageFactory;
@@ -34,24 +35,30 @@ public class RecyclerViewPageFactory implements BaseViewpageFactory {
 
     @Override
     public Fragment getFragment(int position) {
+        Bundle bundle = new Bundle();
         if (fragment==null){
             switch (position){
                 case PAGE_1:
-                    fragment= new ReyclerPageFragment(PAGE_1);
+                    fragment= new ReyclerPageFragment();
+                    bundle.putInt(ReyclerPageFragment.KEY_PAGE,PAGE_1);
                     return fragment;
                 case PAGE_2:
-                    fragment= new ReyclerPageFragment(PAGE_2);
+                    fragment= new ReyclerPageFragment();
+                    bundle.putInt(ReyclerPageFragment.KEY_PAGE,PAGE_2);
                     return fragment;
                 case PAGE_3:
-                    fragment= new ReyclerPageFragment(PAGE_3);
+                    fragment= new ReyclerPageFragment();
+                    bundle.putInt(ReyclerPageFragment.KEY_PAGE,PAGE_3);
                     return fragment;
                 case PAGE_4:
-                    fragment= new ReyclerPageFragment(PAGE_4);
+                    fragment= new ReyclerPageFragment();
+                    bundle.putInt(ReyclerPageFragment.KEY_PAGE,PAGE_4);
                     return fragment;
             }
         }else {
             return fragment;
         }
+        fragment.setArguments(bundle);
         return fragment;
     }
 

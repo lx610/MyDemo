@@ -22,8 +22,9 @@ import com.demo.lixuan.mydemo.base.BaseFragment;
 
 
 public class ReyclerPageFragment extends BaseFragment {
+    public static final String KEY_PAGE = "key_page";
 
-    public ReyclerPageFragment(int page1) {
+    public ReyclerPageFragment() {
     }
 
     @Nullable
