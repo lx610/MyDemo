@@ -3,7 +3,8 @@ package com.demo.lixuan.mydemo.widgt.videoAndImageBanner;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.demo.lixuan.mydemo.widgt.LazyViewPager;
+import com.demo.lixuan.mydemo.widgt.LazyViewPageX;
+
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
  * author lixuan
  */
 
-public class ElkBanner extends LazyViewPager {
+public class ElkBanner extends LazyViewPageX {
     private Context context;
     private List<BannerModel> listBean;
 

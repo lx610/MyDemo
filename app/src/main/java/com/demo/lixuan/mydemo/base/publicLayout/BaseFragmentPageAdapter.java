@@ -1,12 +1,16 @@
 package com.demo.lixuan.mydemo.base.publicLayout;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 /**
  * Created by Administrator on 2018/5/30.
@@ -17,8 +21,15 @@ public class BaseFragmentPageAdapter extends FragmentStatePagerAdapter {
 
     public BaseFragmentPageAdapter(FragmentManager fm) {
         super(fm);
-
     }
+
+//    public BaseFragmentPageAdapter(FragmentManager fm) {
+//        super(fm);
+//
+//    }
+//
+//    public BaseFragmentPageAdapter(FragmentManager supportFragmentManager) {
+//    }
 
     @Override
     public Fragment getItem(int position) {

@@ -30,7 +30,7 @@ public class GradleSetMutlApkActivity extends BaseActivity {
         mLlContainer.addView(generateTextButton(BuildConfig.APPLICATION_ID + "", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UiUtils.makeText(BuildConfig.webUrl + "");
+//                UiUtils.makeText(BuildConfig.webUrl + "");
             }
         }));
     }

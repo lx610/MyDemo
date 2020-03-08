@@ -6,12 +6,13 @@ import android.app.Service;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.v7.app.NotificationCompat;
+import androidx.annotation.Nullable;
 import android.util.Log;
 
 import com.demo.lixuan.mydemo.MainActivity;
 import com.demo.lixuan.mydemo.R;
+
+import androidx.core.app.NotificationCompat;
 
 /**
  * Created by Administrator on 2018/5/24.

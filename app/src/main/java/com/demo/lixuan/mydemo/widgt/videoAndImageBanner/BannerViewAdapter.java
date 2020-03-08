@@ -3,7 +3,7 @@ package com.demo.lixuan.mydemo.widgt.videoAndImageBanner;
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
-import android.support.v4.view.PagerAdapter;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,6 +14,8 @@ import com.demo.lixuan.mydemo.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.viewpager.widget.PagerAdapter;
 
 /**
  * 类 名: BannerViewAdapter

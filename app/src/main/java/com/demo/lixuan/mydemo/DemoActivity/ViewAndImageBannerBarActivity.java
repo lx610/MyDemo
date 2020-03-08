@@ -6,7 +6,7 @@ import android.os.Message;
 
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
-import com.demo.lixuan.mydemo.widgt.LazyViewPager;
+
 import com.demo.lixuan.mydemo.widgt.videoAndImageBanner.BannerModel;
 import com.demo.lixuan.mydemo.widgt.videoAndImageBanner.BannerViewAdapter;
 import com.demo.lixuan.mydemo.widgt.videoAndImageBanner.ElkBanner;
@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -98,7 +99,7 @@ public class ViewAndImageBannerBarActivity extends BaseActivity {
         mAdapter = new BannerViewAdapter(this,list);
         mViewPager.setAdapter(mAdapter);
 
-        mViewPager.setOnPageChangeListener(new LazyViewPager.OnPageChangeListener() {
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 

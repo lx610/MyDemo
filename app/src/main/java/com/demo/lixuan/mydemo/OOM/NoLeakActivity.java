@@ -3,9 +3,11 @@ package com.demo.lixuan.mydemo.OOM;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.lang.ref.WeakReference;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * 利用软引用解决内存泄露问题
