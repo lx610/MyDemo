@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -58,6 +60,7 @@ public class FlowFingerActivity extends BaseActivity {
 
             }
         });
+        mLlContainer.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
         mLlContainer.addView(mButton);
         mLlContainer.addView(mButton2);
 
