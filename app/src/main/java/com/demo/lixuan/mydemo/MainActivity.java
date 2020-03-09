@@ -15,6 +15,7 @@ import com.demo.lixuan.mydemo.DemoActivity.HeadZoomScollerActvity;
 import com.demo.lixuan.mydemo.DemoActivity.KotLinActivity;
 import com.demo.lixuan.mydemo.DemoActivity.OOMExampleACitivity;
 import com.demo.lixuan.mydemo.DemoActivity.ProcessActivity;
+import com.demo.lixuan.mydemo.DemoActivity.RecyclerListDemoActivity;
 import com.demo.lixuan.mydemo.DemoActivity.RetrofitIntorcepterActivity;
 import com.demo.lixuan.mydemo.DemoActivity.StringAndTextViewActivity;
 import com.demo.lixuan.mydemo.DemoActivity.ViewAndImageBannerBarActivity;
@@ -53,7 +54,7 @@ public class  MainActivity extends BaseActivity {
     public void initView(Bundle savedInstanceState) {
 //        mLlBtContainer= (LinearLayout) findViewById(R.id.ll_bt_container);
         mLlBtContainer.addView(generateBtToStartActivity(new RetrofitIntorcepterActivity()));
-        mLlBtContainer.addView(generateBtToStartActivity(new ExpendListActivity()));
+        mLlBtContainer.addView(generateBtToStartActivity(new RecyclerListDemoActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new ButtonActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new StringAndTextViewActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new AnimationActivity()));

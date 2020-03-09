@@ -13,9 +13,11 @@ import java.util.List;
 
 public abstract class BaseCompanyDataBean  implements BaseSubListDataBean,Serializable {
 
+    public static  String rootItemTag = "null";
+
     @Override
     public String getRootItemBelongTo() {
-        return "0";
+        return rootItemTag;
     }
 
     /**

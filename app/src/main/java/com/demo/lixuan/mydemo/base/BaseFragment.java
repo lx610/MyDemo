@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,9 +52,9 @@ public abstract class BaseFragment extends Fragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initView(savedInstanceState);
-        initData();
-        initListener();
+        initView(mView,savedInstanceState);
+        initData(mView,savedInstanceState);
+        initListener(mView,savedInstanceState);
     }
 
 
@@ -78,9 +77,9 @@ public abstract class BaseFragment extends Fragment{
     }
 
 
-    protected abstract void initListener();
+    protected abstract void initListener(View view, Bundle savedInstanceState);
 
-    protected abstract void initData();
+    protected abstract void initData(View view, Bundle savedInstanceState);
 
-    protected abstract void initView(Bundle savedInstanceState);
+    protected abstract void initView(View rootView, Bundle savedInstanceState);
 }

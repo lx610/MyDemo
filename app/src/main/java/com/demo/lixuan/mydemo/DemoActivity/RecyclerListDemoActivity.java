@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.demo.lixuan.mydemo.RecyclerView.ExpendListActivity;
+import com.demo.lixuan.mydemo.RecyclerView.LevelRecylerListActivity;
 import com.demo.lixuan.mydemo.base.publicLayout.LinearActivity;
 
 /**
@@ -16,7 +17,7 @@ public class RecyclerListDemoActivity extends LinearActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
         mLlContainer.addView(generateBtToStartActivity(new ExpendListActivity()));
-        mLlContainer.addView(generateBtToStartActivity(new ExpendListActivity()));
+        mLlContainer.addView(generateBtToStartActivity(new LevelRecylerListActivity()));
     }
 
     @Override

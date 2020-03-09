@@ -16,7 +16,7 @@ public class NomalOutAndInerClassFragment extends BaseLinearFragment {
     OutClass.inerClass inerClass = outClass.new inerClass();
 
     @Override
-    protected void initListener() {
+    protected void initListener(View view, Bundle savedInstanceState) {
         mLlContainer.addView(generateTextButton("outclass add number", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,12 +56,12 @@ public class NomalOutAndInerClassFragment extends BaseLinearFragment {
     }
 
     @Override
-    protected void initData() {
+    protected void initData(View view, Bundle savedInstanceState) {
 
     }
 
     @Override
-    protected void initView(Bundle savedInstanceState) {
+    protected void initView(View view, Bundle savedInstanceState) {
         mLogText = (TextView) generateTextButton("", new View.OnClickListener() {
             @Override
             public void onClick(View view) {

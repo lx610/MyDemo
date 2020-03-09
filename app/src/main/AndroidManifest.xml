@@ -82,10 +82,9 @@
         <activity android:name=".baseElement.broadCast.DynamicBoardCastActivity"/>
         <activity android:name=".baseElement.broadCast.OrderBroadCastActivity"/>
         <activity android:name=".OOM.MakeOOMActivity"/>
-        <activity android:name=".baselayout.BaseLayoutActivity"/>
-        <activity android:name=".baselayout.scollerView.ScrollerWithRecyclerActivity"/>
-        <activity android:name=".baselayout.webView.WebViewActivity"/>
         <activity android:name=".widgt.cardPageView.CardPageActivity"/>
+        <activity android:name=".RecyclerView.LevelRecylerListActivity"/>
+        <activity android:name=".DemoActivity.RecyclerListDemoActivity"/>
 
         <service android:name=".process.MessageService"
             android:process=":remote"
