@@ -18,6 +18,7 @@ import com.demo.lixuan.mydemo.DemoActivity.ProcessActivity;
 import com.demo.lixuan.mydemo.DemoActivity.RecyclerListDemoActivity;
 import com.demo.lixuan.mydemo.DemoActivity.RetrofitIntorcepterActivity;
 import com.demo.lixuan.mydemo.DemoActivity.StringAndTextViewActivity;
+import com.demo.lixuan.mydemo.DemoActivity.TextViewActivity;
 import com.demo.lixuan.mydemo.DemoActivity.ViewAndImageBannerBarActivity;
 import com.demo.lixuan.mydemo.DemoActivity.WidgtActivity;
 import com.demo.lixuan.mydemo.DemoActivity.topBar.TopBarActivity;
@@ -75,6 +76,7 @@ public class  MainActivity extends BaseActivity {
         mLlBtContainer.addView(generateBtToStartActivity(new JavaDemoActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new DeviceActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new HttpActivity()));
+        mLlBtContainer.addView(generateBtToStartActivity(new TextViewActivity()));
 
 
 

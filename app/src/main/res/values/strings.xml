@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MyDemo</string>
     <string name="app_authorities">com.demo.lixuan.mydemo</string>
+    <string name="read_less">收起</string>
+    <string name="read_more">展开</string>
+    <string name="span_test_text">1234567890abcdefg 网址:www.baidu.comn 加点法士大夫按时发卡机是快递费 发阿斯顿法师打发斯蒂芬阿萨德饭</string>
 </resources>

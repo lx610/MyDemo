@@ -85,6 +85,7 @@
         <activity android:name=".widgt.cardPageView.CardPageActivity"/>
         <activity android:name=".RecyclerView.LevelRecylerListActivity"/>
         <activity android:name=".DemoActivity.RecyclerListDemoActivity"/>
+        <activity android:name=".DemoActivity.TextViewActivity"/>
 
         <service android:name=".process.MessageService"
             android:process=":remote"
