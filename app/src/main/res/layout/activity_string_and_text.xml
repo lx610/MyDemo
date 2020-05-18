@@ -12,4 +12,10 @@
         android:background="@color/pink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="尊敬的不会后悔，在政府指导、业主监督下，经市场调研、公司筛选、业主推荐、项目勘察、公司展示、方案汇总、审议评价、打分评定等前期准备，小区物业招标已进入“业主投票表决阶段”，诚邀您亲临现场或委托投票，如有疑问，请短信回复或与我沟通。哈哈哈哈哈哈哈哈哈哈测试多行刚好虎好哈哈急急急急急急咳咳呵呵呵爵迹京剧刚过哈哈哈哈哈哈哈哈嘿嘿嘿虎哈哈哈京剧骨灰盒哈哈花花还好花花刚刚好哈哈哈过好好好喝跟花花个刚好哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈急急"
+        />
 </LinearLayout>
