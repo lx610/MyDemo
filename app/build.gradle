@@ -91,9 +91,13 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+//    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//    })
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
     implementation 'com.android.support:support-v4:28.+'
     implementation 'com.android.support:appcompat-v7:28.0.2'
     implementation rootProject.ext.dependencies["butterknife"]
@@ -103,7 +107,6 @@ dependencies {
     implementation rootProject.ext.dependencies["glide"]
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.23'
     //万能RecyclerViewAdapter
-    testImplementation 'junit:junit:4.12'
     implementation rootProject.ext.dependencies["support-v4"]
     implementation rootProject.ext.dependencies["design"]
 //    implementation rootProject.ext.dependencies["cardview-v7"]
