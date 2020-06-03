@@ -14,6 +14,7 @@ import com.demo.lixuan.mydemo.widgt.cardPageView.CardPageActivity;
 import com.demo.lixuan.mydemo.widgt.clock.ClockActivity;
 import com.demo.lixuan.mydemo.widgt.cludeCircleImage.GiveStarsToFoucusActivity;
 import com.demo.lixuan.mydemo.widgt.fingerPSW.fingerPSWActivity;
+import com.demo.lixuan.mydemo.widgt.pupwindow.keybordWindow.KeyboardWindowActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -85,6 +86,12 @@ public class WidgtActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(WidgtActivity.this,CardPageActivity.class));
+            }
+        }));
+        mLlContainer.addView(generateTextButton("KeyboardWindowActivity ", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(WidgtActivity.this, KeyboardWindowActivity.class));
             }
         }));
     }

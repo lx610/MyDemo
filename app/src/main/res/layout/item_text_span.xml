@@ -3,15 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<com.demo.lixuan.mydemo.widgt.textView.textView.ReadMoreTextView
-    app:layout_constraintTop_toTopOf="parent"
-    android:id="@+id/tv_text"
-    android:textSize="16sp"
-    android:textColor="@color/color_222222"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:lineSpacingMultiplier="1.5"
-    app:trimLines="7"
-    android:autoLink="all"
-    />
+<!--<com.demo.lixuan.mydemo.widgt.textView.textView.ReadMoreTextView-->
+<!--    app:layout_constraintTop_toTopOf="parent"-->
+<!--    android:id="@+id/tv_text"-->
+<!--    android:textSize="16sp"-->
+<!--    android:textColor="@color/color_222222"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:lineSpacingMultiplier="1.5"-->
+<!--    app:trimLines="7"-->
+<!--    android:autoLink="all"-->
+<!--    />-->
+    <com.demo.lixuan.mydemo.widgt.textView.textView.ExpandableTextView
+        android:id="@+id/tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/color_222222"
+        android:lineSpacingMultiplier="1.5"
+        android:lineSpacingExtra="4dp"
+        app:ep_max_line="4"
+        app:ep_need_contract="true"
+        app:ep_need_expand="true"
+        app:ep_expand_color="@color/blue_4a81fb"
+        app:ep_contract_color="@color/blue_4a81fb"
+        app:ep_need_mention="false"
+        app:ep_need_link="true"
+        app:ep_link_color="@color/blue_4a81fb"
+        />
 </LinearLayout>

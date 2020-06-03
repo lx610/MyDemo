@@ -103,6 +103,7 @@ public class StringRexTest {
 
     @Test
     public void textCombineArg(){
+
         String orgText = "｛大师傅｝呀呀呀呀呀呀呀呀呀呀呀呀｛大幅｝呃呃呃呃呃呃呃呃呃呃｛阿道夫｝水水水水水水水水是是是｛告诉对方｝呜呜呜呜呜呜呜呜｛告诉对方｝";
         String[] textPieace = splitArgmentNum(orgText);
         StringBuilder builder = new StringBuilder();
