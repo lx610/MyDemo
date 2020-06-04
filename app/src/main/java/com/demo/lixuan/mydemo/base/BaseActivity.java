@@ -99,13 +99,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     public View generateTextButton(String buttonName, View.OnClickListener oncliclickLiener) {
         TextView textBt=new TextView(this);
         LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.setMargins(10,10,10,10);
+        params.setMargins(30,30,30,30);
         textBt.setLayoutParams(params);
         textBt.setText(buttonName);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             textBt.setBackground(getDrawable(R.color.pink));
         }
-        textBt.setPadding(10,10,10,10);
+        textBt.setPadding(30,30,30,30);
         textBt.setOnClickListener(oncliclickLiener);
         return textBt;
     }

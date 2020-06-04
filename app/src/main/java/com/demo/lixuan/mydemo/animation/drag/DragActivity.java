@@ -26,7 +26,8 @@ public class DragActivity extends BaseActivity {
 
     @Override
     public int getLayoutResId() {
-        return R.layout.layout_only_gridlayout;
+//        return R.layout.layout_only_gridlayout;
+        return R.layout.activity_drag;
     }
 
     @Override

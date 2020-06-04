@@ -78,8 +78,6 @@ public class  MainActivity extends BaseActivity {
         mLlBtContainer.addView(generateBtToStartActivity(new HttpActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new TextViewActivity()));
 
-
-
     }
 
     @Override
