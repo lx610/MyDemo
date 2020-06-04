@@ -5,4 +5,11 @@
     <string name="read_more">展开</string>
     <string name="social_text_target">网页链接</string>
     <string name="span_test_text">1234 ,5678,90abc,defg 网址:www.baidu.comn 加点法士,大夫按时,发卡机是,快递费 发阿斯,顿法师打发,斯蒂芬阿,萨德饭,打发发现，阿斯蒂芬动感，阿斯顿发顺丰，打的费，阿斯顿发生，是打发斯蒂芬，打个地方官搭嘎，阿斯蒂芬斯蒂芬，尊敬的不会后悔，在政府指导、业主监督下，经市场调研、公司筛选、业主推荐、项目勘察、公司展示、方案汇总、审议评价、打分评定等前期准备，小区物业招标已进入“业主投票表决阶段”，诚邀您亲临现场或委托投票，如有疑问，请短信回复或与我沟通。哈哈哈哈哈哈哈哈哈哈测试多行刚好虎好哈哈急急急急急急咳咳呵呵呵爵迹京剧刚过哈哈哈哈哈哈哈哈嘿嘿嘿虎哈哈哈京剧骨灰盒哈哈花花还好花花刚刚好哈哈哈过好好好喝跟花花个刚好哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈急急</string>
+
+
+    <string name="install_package_error">升级包被恶意软件篡改 请重新升级下载安装</string>
+    <string name="install_signatures_error">升级包安全校验失败 请重新升级</string>
+    <string name="install_verify__signatures_error">升级包为盗版应用 请重新升级</string>
+    <string name="install_package_delete">安装包已被恶意软件删除</string>
+    <string name="install_package_exception">安装包异常</string>
 </resources>

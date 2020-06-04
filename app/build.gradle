@@ -24,6 +24,19 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("boolean", "ISLOG", "false")//日志打印
+
+        }
+
+
+        debug {
+            buildConfigField("boolean", "ISLOG", "true")//日志打印
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // ndk {
+            //// 需要将 x86 架构过滤掉
+            //abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
+            //}
         }
     }
 
