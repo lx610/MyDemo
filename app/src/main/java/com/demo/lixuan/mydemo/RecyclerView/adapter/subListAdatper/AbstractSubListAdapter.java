@@ -33,7 +33,7 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public  abstract class AbstractSubListAdapter<K extends BaseViewHolder> extends RecyclerView.Adapter {
 
-    List<BaseSubListDataBean> totlalList;
+    List< BaseSubListDataBean> totlalList;
     List<BaseSubListDataBean> visiableItemList;
     //根机构，对应公司名称
     public BaseSubListDataBean rootDataBean;
@@ -78,24 +78,24 @@ public  abstract class AbstractSubListAdapter<K extends BaseViewHolder> extends 
 
     /**生成nameOfItem 的子列表
      * @param totalDataList 完整数据
-     * @param nameOfItem  本条列表的所属
+     * @param deptTagOfCurrentItem  本条列表的所属
      * @param level 层级
      * @param dataBean  列表所有者对象
      * @return
      */
-    public List<BaseSubListDataBean> fliterCurrentItemList(List<? extends BaseSubListDataBean> totalDataList, String nameOfItem, int level, BaseSubListDataBean dataBean) {
+    public List<BaseSubListDataBean> fliterCurrentItemList(List<? extends BaseSubListDataBean> totalDataList, String deptTagOfCurrentItem, int level, BaseSubListDataBean dataBean) {
 
         List<BaseSubListDataBean> newList = new ArrayList<>();
 
         for (int i = 0; i < totalDataList.size(); i++) {
             BaseSubListDataBean bean = totalDataList.get(i);
             if (bean == null){
-                Log.e("daf",dataBean.getNameOfCurrentItem());
+                Log.e("daf",dataBean.getDeptTagOfCurrentItem());
             }
 
-            if (TextUtils.isEmpty(nameOfItem)){
+            if (TextUtils.isEmpty(deptTagOfCurrentItem)){
                 //初始化项目，
-                if (bean.getNameOfItemBelongsTo().equals(bean.getRootItemBelongTo())){
+                if (bean.getDeptTagOfItemBelongsTo().equals(bean.getRootItemBelongTo())){
                     //0级别项目
                     if (bean.getLevel() == null){
                         bean.setLevel(level);
@@ -117,9 +117,9 @@ public  abstract class AbstractSubListAdapter<K extends BaseViewHolder> extends 
 //            }
             else {
                 //次级列表
-                if (!bean.getNameOfItemBelongsTo().equals(bean.getRootItemBelongTo())){
-                    if (nameOfItem != null){
-                        if (nameOfItem.equals(bean.getNameOfItemBelongsTo())){
+                if (!bean.getDeptTagOfItemBelongsTo().equals(bean.getRootItemBelongTo())){
+                    if (deptTagOfCurrentItem != null){
+                        if (deptTagOfCurrentItem.equals(bean.getDeptTagOfItemBelongsTo())){
                             //把属于 nameOfUpItem 加入这个列表
                             if (bean.getLevel() == null || bean.getLevel()==0){
                                 bean.setLevel(level);
@@ -206,9 +206,9 @@ public  abstract class AbstractSubListAdapter<K extends BaseViewHolder> extends 
 
             Integer currentLevel = dataBean.getLevel();
             if (currentLevel != null){
-                List<BaseSubListDataBean> itemList = fliterCurrentItemList(totlalList, dataBean.getNameOfCurrentItem(), currentLevel + 1,dataBean);
+                List<BaseSubListDataBean> itemList = fliterCurrentItemList(totlalList, dataBean.getDeptTagOfCurrentItem(), currentLevel + 1,dataBean);
                 if (dataBean.isBussinessData()){
-                        dataBean.setSubList(itemList);
+                    dataBean.setSubList(itemList);
                 }
 
 
@@ -296,7 +296,7 @@ public  abstract class AbstractSubListAdapter<K extends BaseViewHolder> extends 
                         }else {
                             count = count + newCount;
                         }
-                        Log.d("getAllMemberCount", "getAllMemberCount: " + dataBean.getNameOfCurrentItem() + newCount);
+                        Log.d("getAllMemberCount", "getAllMemberCount: " + dataBean.getDeptTagOfCurrentItem() + newCount);
                     }
 
                 }

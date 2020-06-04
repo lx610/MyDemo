@@ -13,7 +13,7 @@ import java.util.List;
 
 public abstract class BaseCompanyDataBean  implements BaseSubListDataBean,Serializable {
 
-    public static  String rootItemTag = "null";
+    public static  String rootItemTag = "-10";
 
     @Override
     public String getRootItemBelongTo() {

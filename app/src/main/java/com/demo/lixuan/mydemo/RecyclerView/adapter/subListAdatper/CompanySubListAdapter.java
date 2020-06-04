@@ -15,7 +15,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.RecyclerView.adapter.subListAdatper.bean.BaseSubListDataBean;
-import com.demo.lixuan.mydemo.RecyclerView.adapter.subListAdatper.bean.BaseSubListDataBean;
 import com.demo.lixuan.mydemo.RecyclerView.adapter.subListAdatper.bean.CompanyGropBean;
 import com.demo.lixuan.mydemo.RecyclerView.adapter.subListAdatper.bean.CompanyMember;
 import com.demo.lixuan.mydemo.RecyclerView.adapter.subListAdatper.controller.BaseSubListClickMissionController;
@@ -230,9 +229,9 @@ public class CompanySubListAdapter extends AbstractSubListAdapter<BaseViewHolder
 
         if (dataBean.getSubListOwner()!=null){
 
-            tvName.setText("公司员工 ：" + dataBean.getItemName() + "  lever :" + dataBean.getLevel() + "  belong:" + dataBean.getNameBelong() );
+            tvName.setText("公司员工 ：" + dataBean.getItemName() + "  lever :" + dataBean.getLevel() + "  belong:" + dataBean.getDeptCodeBelongTo() );
         }else {
-            tvName.setText("公司员工 ：" + dataBean.getItemName() + "  lever :" + dataBean.getLevel() + "  belong:" + dataBean.getNameBelong() );
+            tvName.setText("公司员工 ：" + dataBean.getItemName() + "  lever :" + dataBean.getLevel() + "  belong:" + dataBean.getDeptCodeBelongTo() );
 
         }
 
@@ -375,9 +374,9 @@ public class CompanySubListAdapter extends AbstractSubListAdapter<BaseViewHolder
         newCompanyMember.setItemName(nameString);
         if (dataBean.getItemType() == CompanyGropBean.ITEM_TYPE_DEFAULT_COMPAY_GROUP){
 
-            newCompanyMember.setNameBelong(dataBean.getNameOfCurrentItem());
+            newCompanyMember.setDeptCodeBelongTo(dataBean.getDeptTagOfCurrentItem());
         }else {
-            newCompanyMember.setNameBelong(dataBean.getNameOfItemBelongsTo());
+            newCompanyMember.setDeptCodeBelongTo(dataBean.getDeptTagOfItemBelongsTo());
         }
         newCompanyMember.setItemType(CompanyMember.ITEM_TYPE_MEMBER_DEFAULT);
         newCompanyMember.setSubListOwner(dataBean.getSubListOwner());
@@ -399,9 +398,9 @@ public class CompanySubListAdapter extends AbstractSubListAdapter<BaseViewHolder
         CompanyGropBean newCompanyGrop = new CompanyGropBean();
         newCompanyGrop.setItemName(addGroup.getText().toString());
         if (dataBean.getItemType() == CompanyGropBean.ITEM_TYPE_DEFAULT_COMPAY_GROUP){
-            newCompanyGrop.setNameBelong(dataBean.getNameOfCurrentItem());
+            newCompanyGrop.setDeptCodeBelong(dataBean.getDeptTagOfCurrentItem());
         }else {
-            newCompanyGrop.setNameBelong(dataBean.getNameOfItemBelongsTo());
+            newCompanyGrop.setDeptCodeBelong(dataBean.getDeptTagOfItemBelongsTo());
         }
 
         newCompanyGrop.setItemType(CompanyGropBean.ITEM_TYPE_DEFAULT_COMPAY_GROUP);
@@ -465,9 +464,9 @@ public class CompanySubListAdapter extends AbstractSubListAdapter<BaseViewHolder
         companyMember.setBussinessData(false);
         if (dataBean.getItemType() == CompanyGropBean.ITEM_TYPE_DEFAULT_COMPAY_GROUP){
 
-            companyMember.setNameBelong(sublListOwner.getNameOfCurrentItem());
+            companyMember.setDeptCodeBelongTo(sublListOwner.getDeptTagOfCurrentItem());
         }else {
-            companyMember.setNameBelong(dataBean.getNameOfItemBelongsTo());
+            companyMember.setDeptCodeBelongTo(dataBean.getDeptTagOfItemBelongsTo());
         }
         //要等newCompanyGrop 设置层级先
         if (dataBean.getItemType() == CompanyGropBean.ITEM_TYPE_DEFAULT_COMPAY_GROUP){
@@ -490,7 +489,7 @@ public class CompanySubListAdapter extends AbstractSubListAdapter<BaseViewHolder
             Integer currentLevel = dataBean.getLevel();
             if (currentLevel != null){
 
-                List<BaseSubListDataBean> itemList = fliterCurrentItemList(totlalList, dataBean.getNameOfCurrentItem(), currentLevel + 1,dataBean);
+                List<BaseSubListDataBean> itemList = fliterCurrentItemList(totlalList, dataBean.getDeptTagOfCurrentItem(), currentLevel + 1,dataBean);
                 if (dataBean.isBussinessData()){
                     if (itemList!=null && itemList.size()>0){
                         CompanyMember addItem = generateAddButton(dataBean, dataBean);

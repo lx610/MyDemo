@@ -12,9 +12,9 @@ import java.util.List;
  */
 public interface BaseSubListDataBean extends MultiItemEntity,Serializable {
 
-    String getNameOfCurrentItem();
+    String getDeptTagOfCurrentItem();
 
-    String getNameOfItemBelongsTo();
+    String getDeptTagOfItemBelongsTo();
 
     /**判断根部的依据
      * @return

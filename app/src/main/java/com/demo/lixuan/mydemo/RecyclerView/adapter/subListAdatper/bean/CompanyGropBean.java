@@ -15,7 +15,8 @@ public class CompanyGropBean extends BaseCompanyDataBean {
     int itemType = ITEM_TYPE_DEFAULT_COMPAY_GROUP;
 
     String itemName;
-    String nameBelong;
+    String DeptCodeBelong;
+    String deptCode = "-1";
 
     public String getItemName() {
         return itemName;
@@ -25,22 +26,32 @@ public class CompanyGropBean extends BaseCompanyDataBean {
         this.itemName = itemName;
     }
 
-    public String getNameBelong() {
-        return nameBelong;
+    public String getDeptCode() {
+
+        return deptCode;
     }
 
-    public void setNameBelong(String nameBelong) {
-        this.nameBelong = nameBelong;
+    public void setDeptCode(String deptCode) {
+
+        this.deptCode = deptCode;
+    }
+
+    public String getDeptCodeBelong() {
+        return DeptCodeBelong;
+    }
+
+    public void setDeptCodeBelong(String deptCodeBelong) {
+        this.DeptCodeBelong = deptCodeBelong;
     }
 
     @Override
-    public String getNameOfCurrentItem() {
-        return itemName;
+    public String getDeptTagOfCurrentItem() {
+        return deptCode + "";
     }
 
     @Override
-    public String getNameOfItemBelongsTo() {
-        return nameBelong;
+    public String getDeptTagOfItemBelongsTo() {
+        return DeptCodeBelong + "";
     }
 
     @Override

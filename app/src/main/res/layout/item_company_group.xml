@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-    <com.demo.lixuan.mydemo.RecyclerView.adapter.subListAdatper.view.InsideRecyclerView
+    <com.demo.lixuan.mydemo.RecyclerView.adapter.subListAdatper.InsideRecyclerView
         android:id="@+id/line_list"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,12 +20,12 @@
         app:layout_constraintRight_toLeftOf="@id/ll_content_container"
         android:layout_marginTop="25dp"
         android:padding="2dp"
-
+        android:src="@drawable/icon_create_org_arrow_right"
         android:layout_gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ll_content_container"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints">
-<!--            167dp-->
+            <!--            167dp-->
             <LinearLayout
                 android:id="@+id/ll_name_contaner"
                 android:orientation="horizontal"
@@ -60,6 +60,7 @@
                 </LinearLayout>
                 <ImageView
                     android:id="@+id/iv_member_icon"
+                    android:src="@drawable/icon_create_org_dept"
                     android:layout_marginLeft="7.5dp"
                     android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
@@ -98,20 +99,22 @@
                 android:visibility="gone"
                 app:layout_constraintLeft_toRightOf="@id/tv_name"
                 android:layout_marginLeft="8dp"
+                android:src="@drawable/icon_create_org_edit"
                 android:text="编辑"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                 />
+                />
             <ImageView
                 android:id="@+id/view_delete"
                 android:visibility="gone"
                 app:layout_constraintLeft_toRightOf="@id/view_edit"
                 android:layout_marginLeft="8dp"
+                android:src="@drawable/icon_create_org_delet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-               />
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -131,6 +134,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:src="@drawable/icon_create_org_add_dept"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="7.5dp"
                     android:layout_width="wrap_content"
@@ -138,6 +142,7 @@
                 <EditText
                     android:id="@+id/tv_add_group"
                     app:layout_constraintLeft_toRightOf="@id/line_list"
+                    android:hint="添加组织"
                     android:textColorHint="@color/blue_4a81fb"
                     android:textSize="16sp"
                     android:textColor="@color/color_222222"
@@ -150,33 +155,35 @@
                     android:imeOptions="actionDone"
                     tools:ignore="HardcodedText"/>
             </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:background="@drawable/shape_round_5dp_white_bg"
-            android:layout_marginBottom="16dp"
-            android:minWidth="167dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="7.5dp"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="@drawable/shape_round_5dp_white_bg"
+                android:layout_marginBottom="16dp"
+                android:minWidth="167dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/tv_add_member"
-                app:layout_constraintLeft_toRightOf="@id/line_list"
-                android:textColorHint="@color/blue_4a81fb"
-                android:textSize="16sp"
-                android:textColor="@color/color_222222"
-                android:gravity="center_vertical"
-                android:paddingLeft="6dp"
-                android:layout_width="match_parent"
-                android:layout_height="33dp"
-                tools:ignore="HardcodedText"/>
-        </LinearLayout>
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/icon_create_org_add_people"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="7.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tv_add_member"
+                    app:layout_constraintLeft_toRightOf="@id/line_list"
+                    android:hint="添加成员"
+                    android:textColorHint="@color/blue_4a81fb"
+                    android:textSize="16sp"
+                    android:textColor="@color/color_222222"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="6dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    tools:ignore="HardcodedText"/>
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

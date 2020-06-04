@@ -14,7 +14,28 @@ public class CompanyMember extends BaseCompanyDataBean {
     int itemType = ITEM_TYPE_MEMBER_DEFAULT;
 
     String itemName;
-    String nameBelong;
+    String currentDeptCode = "-1";
+    String deptCodeBelongTo = "-1";
+
+    public String getCurrentDeptCode() {
+
+        return currentDeptCode;
+    }
+
+    public void setCurrentDeptCode(String currentDeptCode) {
+
+        this.currentDeptCode = currentDeptCode;
+    }
+
+    public String getDeptCodeBelongTo() {
+
+        return deptCodeBelongTo;
+    }
+
+    public void setDeptCodeBelongTo(String deptCodeBelongTo) {
+
+        this.deptCodeBelongTo = deptCodeBelongTo;
+    }
 
     public String getItemName() {
         return itemName;
@@ -24,22 +45,15 @@ public class CompanyMember extends BaseCompanyDataBean {
         this.itemName = itemName;
     }
 
-    public String getNameBelong() {
-        return nameBelong;
-    }
 
-    public void setNameBelong(String nameBelong) {
-        this.nameBelong = nameBelong;
+    @Override
+    public String getDeptTagOfCurrentItem() {
+        return currentDeptCode;
     }
 
     @Override
-    public String getNameOfCurrentItem() {
-        return itemName;
-    }
-
-    @Override
-    public String getNameOfItemBelongsTo() {
-        return nameBelong;
+    public String getDeptTagOfItemBelongsTo() {
+        return deptCodeBelongTo;
     }
 
     @Override
