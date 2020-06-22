@@ -29,6 +29,7 @@ import com.demo.lixuan.mydemo.base.BaseActivity;
 import com.demo.lixuan.mydemo.baseElement.broadCast.FauceToCloseActivity;
 import com.demo.lixuan.mydemo.baseElement.service.ServiceActivity;
 import com.demo.lixuan.mydemo.device.DeviceActivity;
+import com.demo.lixuan.mydemo.frame.hotfix.HotFixTestClass;
 import com.demo.lixuan.mydemo.gradleSetting.GradleSetMutlApkActivity;
 import com.demo.lixuan.mydemo.http.HttpActivity;
 import com.demo.lixuan.mydemo.java.JavaDemoActivity;
@@ -77,6 +78,7 @@ public class  MainActivity extends BaseActivity {
         mLlBtContainer.addView(generateBtToStartActivity(new DeviceActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new HttpActivity()));
         mLlBtContainer.addView(generateBtToStartActivity(new TextViewActivity()));
+        mLlBtContainer.addView(generateBtToStartActivity(new HotFixTestClass()));
 
     }
 

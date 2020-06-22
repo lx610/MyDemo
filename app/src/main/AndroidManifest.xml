@@ -87,6 +87,7 @@
         <activity android:name=".DemoActivity.RecyclerListDemoActivity"/>
         <activity android:name=".DemoActivity.TextViewActivity"/>
         <activity android:name=".widgt.pupwindow.keybordWindow.KeyboardWindowActivity"/>
+        <activity android:name=".frame.hotfix.HotFixTestClass"/>
 
         <service android:name=".process.MessageService"
             android:process=":remote"
