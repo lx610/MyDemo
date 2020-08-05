@@ -8,10 +8,12 @@ import android.widget.TextView;
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 
+
 import java.lang.reflect.Method;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 
 /**
  * 类名： AnnotationTestActivity
@@ -19,8 +21,8 @@ import butterknife.ButterKnife;
  * <p>
  * 修改记录：
  * <p>
- * 版 权 所 有:   Copyright  2018
- * 公       司:   深圳市旅联网络科技有限公司
+ * 版 权 所 有:
+ * 公       司:
  * version   2.0
  * date   2018/5/7
  * author lixuan
@@ -28,11 +30,13 @@ import butterknife.ButterKnife;
  */
 
 public class AnnotationTestActivity extends BaseActivity {
+
+
     @BindView(R.id.ll_bt_container)
     GridLayout mLlBtContainer;
     @BindView(R.id.tv_log)
     TextView mTvLog;
-
+    //这个bindview是自定义的
     @Override
     public int getLayoutResId() {
         return R.layout.activity_thread;
@@ -40,6 +44,7 @@ public class AnnotationTestActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
+
         mLlBtContainer.addView(generateTextButton("show method value", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

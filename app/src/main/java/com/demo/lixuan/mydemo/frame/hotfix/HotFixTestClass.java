@@ -8,7 +8,7 @@ import com.demo.lixuan.mydemo.MainActivity;
 import com.demo.lixuan.mydemo.R;
 import com.demo.lixuan.mydemo.base.BaseActivity;
 import com.demo.lixuan.mydemo.frame.hotfix.test.BugTest;
-import com.unicom.xiaowo.login.UniAuthHelper;
+
 
 import java.io.File;
 
