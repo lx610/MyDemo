@@ -7,6 +7,7 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import org.junit.Test;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
@@ -48,6 +49,5 @@ public class ExampleUnitTest {
             System.out.println(get.value());
         }
     }
-
 
 }

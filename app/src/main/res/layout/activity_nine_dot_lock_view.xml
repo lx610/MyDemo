@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<com.demo.lixuan.mydemo.widgt.lockview.LockPatternView
+    android:id="@+id/lock_pattern"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="60px"
+    android:layout_marginRight="60px"
+    android:layout_marginTop="61.4px"
+    android:paddingBottom="0.76px"
+    android:paddingLeft="0.76px"
+    android:paddingRight="0.76px"
+    android:paddingTop="0.76px"/>
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

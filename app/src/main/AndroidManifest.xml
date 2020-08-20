@@ -88,6 +88,7 @@
         <activity android:name=".DemoActivity.TextViewActivity"/>
         <activity android:name=".widgt.pupwindow.keybordWindow.KeyboardWindowActivity"/>
         <activity android:name=".frame.hotfix.HotFixTestClass"/>
+        <activity android:name=".widgt.lockview.NineDotLockViewActivity"/>
 
         <service android:name=".process.MessageService"
             android:process=":remote"
